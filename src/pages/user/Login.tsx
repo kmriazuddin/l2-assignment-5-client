@@ -10,16 +10,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
 const Login = () => {
-  // const location = useLocation();
   const navigate = useNavigate();
-  // const [success, setSuccess] = useState("");
-  // const [error, setError] = useState("");
   const [eye, setEye] = useState(false);
-
-  const [login, { error }] = useLoginMutation();
+  const [login] = useLoginMutation();
   const dispatch = useAppDispatch();
-
-  console.log(error);
 
   const handleSubmit = async (event: any) => {
     event.preventDefault();
@@ -61,7 +55,7 @@ const Login = () => {
         {/* login pic */}
         <div className=" ">
           <img
-            src="https://i.ibb.co/NyV82dX/undraw-Mobile-login-re-9ntv.png"
+            src="https://i.ibb.co/yfwfG4n/login.png"
             className="w-[500px]"
             alt=""
           />
@@ -69,9 +63,9 @@ const Login = () => {
 
         <div className="w-96 p-6 shadow-md bg-white rounded">
           <div className="text-center mb-3 font-bold text-3xl justify-center gap-3 flex items-center">
-            <FaUser className="text-[#49674a] " />
-            <h1 className="animate-text text-[#49674a]  text-xl font-semibold">
-              Sign in to your account
+            <FaUser className="text-cyan-500" />
+            <h1 className="animate-text text-rose-500  text-xl font-semibold">
+              Sign in
             </h1>
           </div>
 
@@ -79,7 +73,7 @@ const Login = () => {
           <form onSubmit={handleSubmit}>
             <div className="mt-3">
               <label htmlFor="email" className="block text-base mb-2">
-                Email
+                Your Email
               </label>
               <input
                 type="email"
@@ -120,7 +114,7 @@ const Login = () => {
             </div>
             <button
               type="submit"
-              className="mt-5 font-semibold text-xl border-2 w-full px-3 py-2 rounded-lg border-[#49674a] bg-[#49674a] hover:bg-transparent hover:text-[#49674a] text-white "
+              className="mt-5 font-semibold text-xl border-2 w-full px-3 py-2 rounded-lg border-cyan-500 bg-rose-500 hover:bg-transparent text-white hover:bg-pink-500 hover:text-white"
             >
               Sign in
             </button>
@@ -129,7 +123,7 @@ const Login = () => {
           <button className="mt-3">
             <small>
               Don’t have an account yet?{" "}
-              <span className="text-[#49674a] font-semibold underline">
+              <span className="text-rose-500 font-semibold underline">
                 <Link to="/register">Sign up</Link>
               </span>
             </small>

@@ -30,12 +30,6 @@ export const authApi = baseApi.injectEndpoints({
           method: "GET",
         };
       },
-      // transformResponse: (response) => {
-      //   console.log("inside response", response);
-      //   return {
-      //     data: response.data,
-      //   };
-      // },
     }),
   }),
 });

@@ -25,7 +25,6 @@ const registerSchema = z.object({
 const Register = () => {
   const navigate = useNavigate();
   const [eye, setEye] = useState(false);
-
   const [addRegister] = useRegisterMutation();
 
   const {
@@ -57,18 +56,14 @@ const Register = () => {
       <div className="md:flex mb-20   gap-10 items-center justify-center md:mt-7  ">
         {/* login pic */}
         <div className=" ">
-          <img
-            src="https://i.ibb.co/NyV82dX/undraw-Mobile-login-re-9ntv.png"
-            className="w-[500px]"
-            alt=""
-          />
+          <img src="https://i.ibb.co/yfwfG4n/login.png" className="w-[500px]" />
         </div>
 
         <div className="w-96 p-6 shadow-md bg-white rounded">
           <div className="text-center mb-3 font-bold text-3xl justify-center gap-3 flex items-center">
-            <FaUser className="text-[#49674a] " />
-            <h1 className="animate-text text-[#49674a]  text-xl font-semibold">
-              Sign up to your account
+            <FaUser className="text-cyan-500 " />
+            <h1 className="animate-text text-rose-500 text-xl font-bold">
+              Register Account
             </h1>
           </div>
 
@@ -76,7 +71,7 @@ const Register = () => {
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="mt-3">
               <label htmlFor="name" className="block text-base mb-2">
-                Name
+                Your Name
               </label>
               <input
                 type="text"
@@ -93,7 +88,7 @@ const Register = () => {
 
             <div className="mt-3">
               <label htmlFor="email" className="block text-base mb-2">
-                Email
+                Your Email
               </label>
               <input
                 type="email"
@@ -170,7 +165,7 @@ const Register = () => {
 
             <button
               type="submit"
-              className="mt-5 font-semibold text-xl border-2 w-full px-3 py-2 rounded-lg border-[#49674a] bg-[#49674a] hover:bg-transparent hover:text-[#49674a] text-white "
+              className="mt-5 font-semibold text-xl border-2 w-full px-3 py-2 rounded-lg border-cyan-500 bg-rose-500 hover:bg-transparent text-white hover:bg-pink-500 hover:text-white"
             >
               Sign up
             </button>
@@ -178,7 +173,7 @@ const Register = () => {
           <button className="mt-3">
             <small>
               Already have an account?{" "}
-              <span className="text-[#49674a] font-semibold underline">
+              <span className="text-rose-500 font-semibold underline">
                 <Link to="/login">Login</Link>
               </span>
             </small>

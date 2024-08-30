@@ -1,139 +1,143 @@
 import { FaMapMarkerAlt } from "react-icons/fa";
-import { MdAccessTimeFilled } from "react-icons/md";
-import { IoCall } from "react-icons/io5";
-
-import { MdEmail } from "react-icons/md";
+import { MdAddIcCall, MdOutlineMail } from "react-icons/md";
 import swal from "sweetalert";
-
-const handleMessage = () => {
-  swal(
-    "Thank you for reaching us",
-    "We will definitely reply your message",
-    "success"
-  );
-};
+import { FaStore } from "react-icons/fa6";
 
 const ContactUs = () => {
+  const handleMessage = () => {
+    swal("Thank you!", "We will definitely reply your message", "success");
+  };
+
   return (
-    <div className="md:px-12 w-full p-4 mt-36 md:mt-12  rounded-md ">
-      <div className="md:flex items-start gap-8  ">
-        <div className="md:w-1/2 w-full rounded-lg   p-4">
-          <div className=" w-full ">
-            <h2 className="text-4xl tracking-widest mb-1 font-bold w-10/12 mx-auto text-center ">
-              Visit Our Office
+    <div className="md:px-12 w-full p-4 md:mt-12 rounded-md">
+      <div className="md:flex items-start gap-8">
+        <div className="md:w-1/2 w-full rounded-lg p-4">
+          <div className=" w-full">
+            <h2 className="text-4xl tracking-widest mb-1 font-bold md:w-10/12 mx-auto text-center">
+              Visit Our Shop
             </h2>
-            <div className="flex justify-center">
-              <div className="w-20 text-center mt-5  rounded-md  h-[5px] bg-[#809580]"></div>
-            </div>
-            <h2 className=" tracking-widest mt-7 mb-7  w-8/12 mx-auto">
-              73 Canal Street, Sibitra Pally, Shymbazar Road, Dharmatala,
-              Kolkata-700030
+            <h2 className=" tracking-widest mb-7 md:w-8/12 text-center mx-auto">
+              16 Eastern Housing Pallabi, Mirpur 2, Dhaka Bangladesh.
             </h2>
-            <img
-              src="https://i.ibb.co/pKzZp5w/expand-idealmeetingroom-still-life-01.jpg"
-              className="rounded-lg md:w-[700px] md:h-[540px]"
-              alt=""
-            />
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3649.8688611499197!2d90.352846230202!3d23.82326186464779!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1722330190009!5m2!1sen!2sbd"
+              width="800"
+              height="500"
+              loading="lazy"
+              className="rounded-xl"
+            ></iframe>
           </div>
         </div>
-        <div className="md:w-1/2  w-full rounded-lg   p-4">
+        <div className="md:w-1/2 w-full rounded-lg p-4">
           <div className=" w-full ">
-            <h2 className="text-4xl tracking-widest mb-1 font-bold w-10/12 ">
-              Leave Us a Message
+            <h2 className="text-4xl tracking-widest mb-1 font-bold w-10/12">
+              Message Here
             </h2>
-         
-            <h2 className=" md:tracking-widest mb-7 mt-7  md:w-8/12 ">
-              We value your feedback and inquiries. If you have any questions,
-              concerns, or just want to share your thoughts, please leave us a
-              message. Our team will get back to you as soon as possible. Your
-              input helps us improve and serve you better.
+            <h2 className=" md:tracking-widest mb-7 md:w-8/12">
+              Simple causal reasoning about a feedback system is difficult
+              because the first system influences the second and second system
+              influences the first, leading to a circular argument. This makes
+              reasoning based upon cause and effect tricky, and it is necessary
+              to analyze the system as a whole.
             </h2>
-            <form>
-              <div className="mt-5">
-                <h2>Name*</h2>
-                <div className="flex justify-center">
-                  <input
-                    name="name"
-                    className="w-full rounded-lg border border-slate-300 mt-2 p-2 transition-transform duration-300 ease-in-out focus:scale-105 focus:shadow-lg"
-                  />
-                </div>
+            <div className="mt-5">
+              <h2>Name*</h2>
+              <div className="flex justify-center">
+                <input
+                  name="name"
+                  className="w-full rounded-lg border border-slate-300 mt-2 p-2"
+                />
               </div>
-              <div className="mt-2">
-                <h2>Email*</h2>
-                <div className="flex justify-center">
-                  <input
-                    name="email"
-                    type="email"
-                    className="w-full rounded-lg border border-slate-300 mt-2 p-2 transition-transform duration-300 ease-in-out focus:scale-105 focus:shadow-lg"
-                  />
-                </div>
+            </div>
+            <div className="mt-2">
+              <h2>Email*</h2>
+              <div className="flex justify-center">
+                <input
+                  name="email"
+                  type="email"
+                  className="w-full rounded-lg border border-slate-300 mt-2 p-2"
+                />
               </div>
-              <div className="mt-2">
-                <h2>Phone Number*</h2>
-                <div className="flex justify-center">
-                  <input
-                    name="number"
-                    className="w-full rounded-lg border border-slate-300 mt-2 p-2 transition-transform duration-300 ease-in-out focus:scale-105 focus:shadow-lg"
-                  />
-                </div>
+            </div>
+            <div className="mt-2">
+              <h2>Phone Number*</h2>
+              <div className="flex  justify-center">
+                <input
+                  name="number"
+                  className="w-full rounded-lg border border-slate-300 mt-2 p-2"
+                />
               </div>
-              <div className="mt-5">
-                <h2>Subject*</h2>
-                <div className="flex justify-center">
-                  <input
-                    name="subject"
-                    className="w-full rounded-lg border border-slate-300 mt-2 p-2 transition-transform duration-300 ease-in-out focus:scale-105 focus:shadow-lg"
-                  />
-                </div>
-              </div>
-              <div className="mt-8">
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={4}
-                  className="mt-2 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm transition-transform duration-300 ease-in-out focus:scale-105 focus:shadow-lg"
-                  placeholder="Write your message here..."
-                ></textarea>
-              </div>
-              <button
-                onClick={handleMessage}
-                className="text-white text-lg mt-6 mx-auto px-5 py-2 rounded-lg bg-[#809580] hover:bg-[#5a685a] transition duration-300 ease-in-out hover:animate-pulse"
-              >
-                Send
-              </button>
-            </form>
+            </div>
+            <div className="mt-8">
+              <textarea
+                id="message"
+                name="message"
+                rows={4}
+                className="mt-2 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none sm:text-lg"
+                placeholder="Write your message here..."
+              ></textarea>
+            </div>
+            <button
+              onClick={handleMessage}
+              className="text-white text-lg mt-6 mx-auto px-5 py-2 rounded-xl bg-pink-500"
+            >
+              Send
+            </button>
           </div>
         </div>
       </div>
-      <div className="md:grid-cols-4 grid-cols-1 grid  mx-3 items-center mt-10 gap-5">
-        {/* cart */}
-        <div className="text-center rounded-md p-3  ">
-          <div className="flex bg-[#809580] animate-bounce rounded-full mx-auto w-20 h-20 items-center justify-center">
+      <div className="md:grid-cols-4 grid-cols-1 grid mx-3 items-center mt-10 gap-5">
+        <div
+          className="text-center rounded-md p-3"
+          style={{
+            boxShadow: "9px 9px 20px #e0e0e0, -9px -9px 20px #ffffff",
+            borderRadius: "30px",
+          }}
+        >
+          <div className="flex bg-green-200 rounded-full mx-auto w-20 h-20 items-center justify-center">
+            <FaStore className="mb-2 text-center text-black text-3xl" />
+          </div>
+          <h2 className="mb-1 text-lg font-medium">OPENING HOURS</h2>
+          <p className="mb-2 lg">Sunday-Thursday: 09:00AM-9:00PM</p>
+        </div>
+        <div
+          className="text-center rounded-md p-3"
+          style={{
+            boxShadow: "9px 9px 20px #e0e0e0, -9px -9px 20px #ffffff",
+            borderRadius: "30px",
+          }}
+        >
+          <div className="flex bg-green-200 rounded-full mx-auto w-20 h-20 items-center justify-center">
             <FaMapMarkerAlt className="mb-2 text-center text-black text-3xl" />
           </div>
           <h2 className="mb-1 text-lg font-medium">Address</h2>
-          <p className="mb-2 text-base">73 Canal Street, Kolkata</p>
+          <p className="mb-2 text-base">Pallabi, Mirpur 2</p>
         </div>
-        <div className="text-center rounded-md p-3 ">
-          <div className="flex bg-[#809580]  animate-bounce  rounded-full mx-auto w-20 h-20 items-center justify-center">
-            <MdAccessTimeFilled className="mb-2 text-center text-black text-4xl" />
+        <div
+          className="text-center rounded-md p-3"
+          style={{
+            boxShadow: "9px 9px 20px #e0e0e0, -9px -9px 20px #ffffff",
+            borderRadius: "30px",
+          }}
+        >
+          <div className="flex bg-green-200 rounded-full mx-auto w-20 h-20 items-center justify-center">
+            <MdAddIcCall className="mb-2 text-center text-black text-3xl" />
           </div>
-          <h2 className="mb-1 text-lg font-medium">OPENING HOURS</h2>
-          <p className="mb-2 lg">Monday-Saturday: 8:00AM-9:00PM</p>
+          <h2 className="mb-1 text-lg font-medium">Contact</h2>
+          <p className="mb-2 text-base">(+0123456789)</p>
         </div>
-        <div className="text-center rounded-md p-3 ">
-          <div className="flex bg-[#809580]  animate-bounce  rounded-full mx-auto w-20 h-20 items-center justify-center">
-            <IoCall className="mb-2 text-center text-black text-3xl" />
+        <div
+          className="text-center rounded-md p-3"
+          style={{
+            boxShadow: "9px 9px 20px #e0e0e0, -9px -9px 20px #ffffff",
+            borderRadius: "30px",
+          }}
+        >
+          <div className="flex bg-green-200 rounded-full mx-auto w-20 h-20 items-center justify-center">
+            <MdOutlineMail className="mb-2 text-center text-black text-3xl" />
           </div>
-          <h2 className="mb-1 text-lg font-medium">PHONE NUMBER</h2>
-          <p className="mb-2 text-base">(+8777090567)</p>
-        </div>
-        <div className="text-center rounded-md p-3 ">
-          <div className="flex  animate-bounce  bg-[#809580] rounded-full mx-auto w-20 h-20 items-center justify-center">
-            <MdEmail className="mb-2 text-center text-black text-3xl" />
-          </div>
-          <h2 className="mb-1 text-lg font-medium">EMAIL</h2>
-          <p className="mb-2 text-base">support@meetingroomlife.com</p>
+          <h2 className="mb-1 text-lg font-medium">Email</h2>
+          <p className="mb-2 text-base">mks.info@gmail.com</p>
         </div>
       </div>
     </div>
