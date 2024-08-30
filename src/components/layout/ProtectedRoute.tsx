@@ -1,9 +1,8 @@
 import { ReactNode } from "react";
-
 import { Navigate, useLocation } from "react-router-dom";
-import { verifyToken } from "../../utils/verifyToken";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { Logout } from "@/redux/features/auth/authSlice";
+import { verifyToken } from "@/utils/veryfyToken";
 
 export type TProtectedRoute = {
   children: ReactNode;
