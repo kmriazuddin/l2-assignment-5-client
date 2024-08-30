@@ -1,15 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
 import SectionTitle from "@/components/ui/SectionTitle";
 import { useGetAllRoomsQuery } from "@/redux/features/admin/roomManagementApi";
-
 import { FaPlus } from "react-icons/fa";
 import { FaBangladeshiTakaSign } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 const AllRoom = () => {
   const { data, isLoading } = useGetAllRoomsQuery(undefined);
-  // console.log(data);
 
   if (isLoading) {
     return (
@@ -19,15 +16,10 @@ const AllRoom = () => {
     );
   }
 
-  // console.log(data?.data);
-
-  // Filter and map the data
   const availableRooms = data?.data.filter((room: any) => !room.isDeleted);
 
-  // console.log(availableRooms);
-
   return (
-    <div className="md:px-12 w-full p-4 md:mt-12 rounded-md ">
+    <div className="md:px-12 w-full p-4 md:mt-12 rounded-md">
       {availableRooms?.length > 0 && (
         <SectionTitle
           subHeading="Our Available Meeting Rooms"
@@ -35,7 +27,7 @@ const AllRoom = () => {
         />
       )}
       {availableRooms?.length > 0 ? (
-        <div className="grid md:grid-cols-3 grid-cols-1 gap-5  justify-between items-center mt-16 rounded-lg">
+        <div className="grid md:grid-cols-3 grid-cols-1 gap-5 justify-between items-center mt-16 rounded-lg">
           {availableRooms?.length > 0 &&
             availableRooms?.slice(0, 6)?.map((room: any) => {
               return (
@@ -43,15 +35,15 @@ const AllRoom = () => {
                   <div className="md:mt-2 p-1">
                     <img
                       src={room?.image[0]}
-                      className="h-[350px] w-[500px] mx-auto relative inset-0 bg-[#072047] opacity-70 "
+                      className="h-[350px] w-[500px] mx-auto relative inset-0 bg-[#072047] opacity-70"
                     />
                   </div>
 
-                  <div className="flex px-3  p-1  mt-4 items-center  justify-between text-white">
+                  <div className="flex px-3 p-1 mt-4 items-center justify-between text-white">
                     <h2 className="text-center font-medium text-white text-xl tracking-wider">
                       {room?.name}
                     </h2>
-                    <div className="flex  items-center text-white mx-2 gap-1">
+                    <div className="flex items-center text-white mx-2 gap-1">
                       <FaBangladeshiTakaSign />
                       <h2 className="text-base font-normal">
                         {" "}
@@ -60,15 +52,15 @@ const AllRoom = () => {
                     </div>
                   </div>
 
-                  <div className="flex justify-between px-3  p-1  ">
+                  <div className="flex justify-between px-3 p-1">
                     <div>
-                      <h2 className="flex  items-center gap-1 text-white font-normal text-left  text-base">
+                      <h2 className="flex items-center gap-1 text-white font-normal text-left text-base">
                         Room:
                         <span className="text-white">{room?.roomNo}</span>
                       </h2>
                     </div>
                     <div>
-                      <h2 className="flex mx-2  items-center gap-1 text-white font-normal text-left  text-base">
+                      <h2 className="flex mx-2 items-center gap-1 text-white font-normal text-left text-base">
                         Floor:
                         <span className="text-white font-medium">
                           {room?.floorNo}
@@ -76,7 +68,7 @@ const AllRoom = () => {
                       </h2>
                     </div>
                   </div>
-                  <div className="flex   max-h-16 text-base  overflow-auto scroll-smooth mr-10 justify-between px-3  p-1  ">
+                  <div className="flex max-h-16 text-base overflow-auto scroll-smooth mr-10 justify-between px-3 p-1">
                     <ul className="mt-2 ">
                       {room?.amenities?.map((amenity: string[], index: any) => (
                         <li
@@ -89,9 +81,9 @@ const AllRoom = () => {
                       ))}
                     </ul>
                   </div>
-                  <div className="flex items-center justify-between mt-4 mb-2 px-3  p-1  ">
+                  <div className="flex items-center justify-between mt-4 mb-2 px-3 p-1">
                     <div>
-                      <h2 className="flex  items-center gap-1 text-white font-normal text-left  text-base">
+                      <h2 className="flex items-center gap-1 text-white font-normal text-left text-base">
                         Capacity:
                         <span className="text-white ">{room?.capacity}</span>
                       </h2>
@@ -110,7 +102,7 @@ const AllRoom = () => {
             })}
         </div>
       ) : (
-        <h2 className="text-3xl mb-2 font-medium text-center mt-16  ">
+        <h2 className="text-3xl mb-2 font-medium text-center mt-16">
           No Product Found
         </h2>
       )}
@@ -118,7 +110,7 @@ const AllRoom = () => {
         <div className="mt-12 flex justify-center">
           <Link
             to="/rooms"
-            className="bg-[#49674a]  text-white text-base hover:bg-[#557856] tracking-wide  py-2 px-4 rounded-lg"
+            className="bg-[#49674a] text-white text-base hover:bg-[#557856] tracking-wide py-2 px-4 rounded-lg"
           >
             See More
           </Link>

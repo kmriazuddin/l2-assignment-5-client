@@ -1,36 +1,34 @@
 import { BsFacebook, BsInstagram } from "react-icons/bs";
-import {
-  AiFillPhone,
-  AiOutlineMail,
-  AiFillHome,
-  AiFillGithub,
-} from "react-icons/ai";
+import { AiFillPhone, AiOutlineMail, AiFillGithub } from "react-icons/ai";
+import { CiLocationArrow1 } from "react-icons/ci";
 import { NavLink } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="bg-[#ccd5cc] z-50 md:px-12 w-full mt-20 p-4 md:mt-30 rounded-md">
+    <div className="bg-slate-500 text-white z-50 md:px-12 w-full mt-20 p-4 md:mt-30 rounded-md">
       <footer className="footer flex flex-col md:flex-row justify-between items-start">
         <div className="flex flex-col mx-4 md:mx-0 items-start">
           <div className="flex items-center gap-3">
             <img
-              src="https://i.ibb.co/7Y3rTBz/yaroslav-kolodiy-6qx-THv-BUq-Eg-unsplash.jpg"
+              src="https://i.ibb.co/4f0CS40/room-used-official-event-4.jpg"
               alt="Instrument Academy"
-              className="w-10 h-10 rounded-full"
+              className="w-14 h-14 rounded-full"
             />
             <span className="footer-title text-2xl md:text-3xl font-bold">
-              Meeting Room Booking
+              MRB Systems
             </span>
           </div>
-          <p className="mt-2 text-lg">This website is for booking rooms.</p>
+          <p className="mt-2 text-lg">
+            For Meeting Room Subscription you can trust on Alpha Net.
+          </p>
           <div className="flex text-3xl items-center gap-4 my-5">
-            <NavLink to="https://www.facebook.com/meema.chowdhury.5?mibextid=ZbWKwL">
+            <NavLink to="https://www.google.com/">
               <BsFacebook className="text-blue-500" />
             </NavLink>
-            <NavLink to="https://www.instagram.com/meema.chowdhury/?igshid=MzRlODBiNWFlZA%3D%3D">
+            <NavLink to="https://www.google.com/">
               <BsInstagram className="text-orange-600" />
             </NavLink>
-            <NavLink to="https://github.com/Moonchowdhur">
+            <NavLink to="https://www.google.com/">
               <AiFillGithub className="text-blue-500 text-4xl" />
             </NavLink>
           </div>
@@ -38,31 +36,36 @@ const Footer = () => {
 
         <div className="flex mx-4 md:mx-0 flex-col md:flex-row md:gap-20 w-full md:w-auto">
           <div className="mt-4 md:mt-0">
-            <span className="footer-title text-xl">About</span>
+            <span className="footer-title text-xl">Others Service</span>
             <ul className="mt-2">
               <li>
-                <a className="link link-hover" href="#">
-                  Best Room by popularity
+                <a className="link link-hover hover:text-pink-500" href="#">
+                  Web Design
                 </a>
               </li>
               <li>
-                <a className="link link-hover" href="#">
-                  More Search
+                <a className="link link-hover hover:text-pink-500" href="#">
+                  Domain Registration
                 </a>
               </li>
               <li>
-                <a className="link link-hover" href="#">
-                  Top Meeting Room
+                <a className="link link-hover hover:text-pink-500" href="#">
+                  Virtual Server
+                </a>
+              </li>
+              <li>
+                <a className="link link-hover hover:text-pink-500" href="#">
+                  Dedicated Server
                 </a>
               </li>
             </ul>
           </div>
           <div className="mt-4 md:mt-0">
-            <span className="footer-title text-xl">Helpful Links</span>
+            <span className="footer-title text-xl">About Us</span>
             <ul className="mt-2">
               <li>
                 <NavLink
-                  className="link link-hover hover:text-green-800 hover:font-medium"
+                  className="link link-hover hover:text-pink-500"
                   to="/about"
                 >
                   Join Our Team
@@ -71,7 +74,7 @@ const Footer = () => {
 
               <li>
                 <NavLink
-                  className="link link-hover hover:text-green-800 hover:font-medium"
+                  className="link link-hover hover:text-pink-500"
                   to="/terms-of-service"
                 >
                   Terms of Service
@@ -79,10 +82,18 @@ const Footer = () => {
               </li>
               <li>
                 <NavLink
-                  className="link link-hover hover:text-green-800 hover:font-medium"
+                  className="link link-hover hover:text-pink-500"
                   to="/privacy-policy"
                 >
                   Privacy Policy
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className="link link-hover hover:text-pink-500"
+                  to="/privacy-policy"
+                >
+                  Our Blog
                 </NavLink>
               </li>
             </ul>
@@ -93,24 +104,23 @@ const Footer = () => {
           <span className="footer-title text-xl">Contact Us</span>
           <div className="mt-2">
             <div className="flex items-center gap-2">
-              <AiFillPhone className="text-black text-3xl" />
-              <p>+8777090567</p>
+              <AiFillPhone className="text-green-500 text-2xl" />
+              <p>+0123456789</p>
             </div>
             <div className="flex items-center gap-2 mt-2">
-              <AiOutlineMail className="text-red-500 text-3xl" />
-              <p>support@meetingroomlife.com</p>
+              <AiOutlineMail className="text-rose-500 text-2xl" />
+              <p>support@mrbinfo.com</p>
             </div>
             <div className="flex items-center gap-2 mt-2">
-              <AiFillHome className="text-black text-3xl" />
-              <p>73 Canal Street, Kolkata</p>
+              <CiLocationArrow1 className="text-black text-2xl" />
+              <p>Pallabi Mirpur-2, Dhaka.</p>
             </div>
           </div>
         </div>
       </footer>
       <hr className="mt-8" />
-      <div className="flex flex-col md:flex-row justify-around items-center py-5 text-center md:text-left">
-        <p>&copy;2024 Meeting Room Booking. All Rights Reserved</p>
-        <p>Powered by Meeting Room Booking</p>
+      <div className="py-5 text-center">
+        <p>&copy;2024 MRB. All Rights Reserved</p>
       </div>
     </div>
   );
