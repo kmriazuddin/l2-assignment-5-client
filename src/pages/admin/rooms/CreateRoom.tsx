@@ -22,14 +22,10 @@ import {
 
 // Define Zod schema for room validation
 const meetingRoomValidationSchema = z.object({
-  // image: z.string().url("Image must be a valid URL"),
   image: z
     .array(z.string().url("Each image must be a valid URL"))
     .min(2, "At least two images are required"),
   name: z.string().min(1, "Name is required"),
-  //   name: z.string().min(1, "Name is required").refine((value) => /^[a-zA-Z\s]+$/.test(value), {
-  //     message: "name must only contain alphabetic characters",
-  //   }),
   roomNo: z.preprocess(
     (val) => Number(val),
     z.number().min(1, "Room number is required")
@@ -60,7 +56,6 @@ const meetingRoomValidationSchema = z.object({
 
 const CreateRoom = ({ isDialogOpen, setIsDialogOpen }: any) => {
   const { user } = useAppSelector((state) => state.auth);
-
   const [addRoom] = roomManagementApi.useAddRoomsMutation();
 
   console.log(user, "user");
@@ -74,8 +69,6 @@ const CreateRoom = ({ isDialogOpen, setIsDialogOpen }: any) => {
   } = useForm({
     resolver: zodResolver(meetingRoomValidationSchema),
   });
-
-  console.log(errors);
 
   const [roomDetails, setRoomDetails] = useState<{
     name: string;
@@ -96,12 +89,10 @@ const CreateRoom = ({ isDialogOpen, setIsDialogOpen }: any) => {
   });
 
   const [newAmenity, setNewAmenity] = useState("");
-  const [newImage, setNewImage] = useState(""); // New state for new image URL
+  const [newImage, setNewImage] = useState("");
 
   // Function to handle form submission
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    console.log("Form data:", data);
-    // Reset form after submission
     reset();
     const toastId = toast.loading("adding room...");
     setRoomDetails({
@@ -138,7 +129,6 @@ const CreateRoom = ({ isDialogOpen, setIsDialogOpen }: any) => {
 
         image: [...roomDetails?.image, newImage.trim()],
       });
-      // setNewImage(""); // Clear the input field
     }
   };
 
@@ -179,16 +169,6 @@ const CreateRoom = ({ isDialogOpen, setIsDialogOpen }: any) => {
           </DialogTitle>
           <DialogDescription className="">
             <form onSubmit={handleSubmit(onSubmit)}>
-              {/* <div className="mb-4 mt-4">
-                <label className="block mb-2">Image Url</label>
-                <Input type="text" {...register("image")} className="w-full" />
-                {errors.image && (
-                  // @ts-expect-error: Unreachable code error
-                  <p className="text-red-500">{errors?.image?.message}</p>
-                )}
-              </div> */}
-
-              {/* Newly added: Handle multiple image URLs */}
               <div className="mb-4 mt-4">
                 <label className="block mb-2">Image URL</label>
                 <div className="flex">
@@ -226,7 +206,7 @@ const CreateRoom = ({ isDialogOpen, setIsDialogOpen }: any) => {
                         onClick={() => handleRemoveImage(index)}
                         className="ml-2"
                       >
-                        <TiDelete className="text-3xl text-[#7AAC7B]" />
+                        <TiDelete className="text-3xl text-cyan-500 hover:bg-pink-500" />
                       </button>
                     </li>
                   ))}
@@ -332,12 +312,6 @@ const CreateRoom = ({ isDialogOpen, setIsDialogOpen }: any) => {
                       >
                         <TiDelete className=" text-3xl  text-[#7AAC7B] " />
                       </button>
-
-                      {/* {index > 0 && errors?.amenities && (
-                       // @ts-expect-error: Unreachable code error
-         <p className="text-red-500"> {errors?.amenities[index]?.message}
-                  </p>
-                )} */}
                     </li>
                   ))}
                 </ul>

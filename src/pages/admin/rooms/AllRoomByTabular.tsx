@@ -21,21 +21,19 @@ import CreateRoom from "./CreateRoom";
 const AllRoomByTabular = () => {
   const [selectedRoomId, setSelectedRoomId] = useState(null);
 
-  const { data, isLoading } = useGetAllRoomsQuery(undefined, {
-    pollingInterval: 1000,
-  });
+  const { data, isLoading } = useGetAllRoomsQuery(undefined);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const [createDialogOpen, setCreateDialogOpen] = useState(false);
 
   const [deleteRoom] = useDeleteRoomMutation();
 
-  const [alertShown, setAlertShown] = useState(false); // State to control alert visibility
+  const [alertShown, setAlertShown] = useState(false);
 
   if (isLoading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-[#557856]"></div>
+        <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-pink-500"></div>
       </div>
     );
   }
@@ -105,38 +103,38 @@ const AllRoomByTabular = () => {
         <button
           type="submit"
           onClick={() => handleAdd()}
-          className="btn btn-primary text-lg px-4 mt-4 py-2 bg-[#557856] text-white font-medium rounded-md hover:bg-[#a2c5a3]"
+          className="btn btn-primary text-lg px-4 mt-4 py-2 bg-cyan-500 text-white font-medium rounded-md hover:bg-pink-500"
         >
           Add Room
         </button>
       </div>
       <Table className="mt-12">
         <TableHeader>
-          <TableRow className=" border-2 border-[#557856]">
-            <TableHead className="text-[#557856] font-medium text-base">
+          <TableRow className=" border-2 border-cyan-500">
+            <TableHead className="text-slate-600 font-medium text-base">
               {" "}
               Name
             </TableHead>
-            <TableHead className="text-[#557856] font-medium text-base">
+            <TableHead className="text-slate-600 font-medium text-base">
               {" "}
               Image
             </TableHead>
-            <TableHead className="text-[#557856] font-medium text-base">
+            <TableHead className="text-slate-600 font-medium text-base">
               Floor
             </TableHead>
-            <TableHead className="text-[#557856] font-medium text-base">
+            <TableHead className="text-slate-600 font-medium text-base">
               Room No
             </TableHead>
-            <TableHead className="text-[#557856] font-medium text-base">
+            <TableHead className="text-slate-600 font-medium text-base">
               Capacity
             </TableHead>
-            <TableHead className="text-[#557856] font-medium text-base">
+            <TableHead className="text-slate-600 font-medium text-base">
               Price
             </TableHead>
-            <TableHead className="text-[#557856] font-medium text-base">
+            <TableHead className="text-slate-600 font-medium text-base">
               Delete
             </TableHead>
-            <TableHead className="text-[#557856] font-medium text-base">
+            <TableHead className="text-slate-600 font-medium text-base">
               Action
             </TableHead>
           </TableRow>
@@ -147,11 +145,7 @@ const AllRoomByTabular = () => {
               <TableRow key={room._id}>
                 <TableCell>{room?.name}</TableCell>
                 <TableCell>
-                  <img
-                    src={room?.image[0]}
-                    className="w-12 h-12 rounded-2xl"
-                    alt=""
-                  />
+                  <img src={room?.image[0]} className="w-12 h-12 rounded" />
                 </TableCell>
 
                 <TableCell> {room?.roomNo}</TableCell>
@@ -161,12 +155,12 @@ const AllRoomByTabular = () => {
                 <TableCell>{room?.isDeleted ? "Yes" : "No"}</TableCell>
                 <TableCell className="flex gap-3 mt-3 items-center">
                   <button onClick={() => handleUpdate(room?._id)}>
-                    <FaPenToSquare className="text-[#557856] text-xl" />
+                    <FaPenToSquare className="text-[#557856] text-2xl md:text-4xl" />
                   </button>
                   <button
                     onClick={() => handleDelete(room?._id, room?.isDeleted)}
                   >
-                    <RiDeleteBack2Fill className="text-red-600 text-2xl" />
+                    <RiDeleteBack2Fill className="text-red-600 text-2xl md:text-4xl" />
                   </button>
                 </TableCell>
               </TableRow>
