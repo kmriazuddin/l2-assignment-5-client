@@ -1,3 +1,5 @@
+import SectionTitle from "@/components/ui/SectionTitle";
+
 const ChooseMeetingRoom = () => {
   const features = [
     {
@@ -10,12 +12,12 @@ const ChooseMeetingRoom = () => {
       description: "All payments are encrypted and securely processed.",
       icon: "🔒",
     },
-  
+
     {
-      title: "Exclusive Discounts",
+      title: "Happy Customers in Over 60+ Countries",
       description:
         "Enjoy special discounts and offers available only to our members.",
-      icon: "💸",
+      icon: "👨🏻‍💼",
     },
     {
       title: "High-Quality Rooms",
@@ -24,28 +26,26 @@ const ChooseMeetingRoom = () => {
       icon: "🏨",
     },
     {
-      title: "Instant Confirmation",
+      title: "Year of Experience in IT Solutoins",
       description: "Receive booking confirmations instantly via email and SMS.",
-      icon: "📧",
+      icon: "🏅",
     },
     {
-      title: "No Hidden Fees",
+      title: "Satisfaction Guarantee",
       description: "What you see is what you pay. No surprises at checkout.",
-      icon: "📝", 
+      icon: "🛡️",
     },
   ];
 
   return (
-    <section className="md:px-8  w-full p-4 mt-40 md:mt-12 rounded-md">
+    <section className="md:px-8 w-full p-4 md:mt-12 rounded-md">
       <div className="container mx-auto text-center">
-        <h2 className="text-3xl mb-2 font-medium tracking-widest text-center">
-          WHY CHOOSE US
-        </h2>
-        {/* underline */}
-        <div className="flex justify-center">
-          <div className="w-20 text-center rounded-md  h-[5px] bg-[#809580]"></div>
-        </div>
-        <div className="grid grid-cols-1  mt-16  sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <SectionTitle
+          subHeading="Why Choose Us"
+          heading="Most Respected IT Solutions in Bangladesh"
+          sectionImg="https://i.ibb.co/SdK0n79/section-title-vector.png"
+        />
+        <div className="grid grid-cols-1 mt-16 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {features.map((feature, index) => (
             <div
               key={index}

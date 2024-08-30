@@ -1,16 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
+import SectionTitle from "@/components/ui/SectionTitle";
 import { useGetAllRoomsQuery } from "@/redux/features/admin/roomManagementApi";
 
-import { FaPlus, FaRupeeSign } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa";
+import { FaBangladeshiTakaSign } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 const AllRoom = () => {
-  // const { data, isLoading } = useGetAllRoomsQuery(undefined, {
-  //   pollingInterval: 1000,
-  // });
   const { data, isLoading } = useGetAllRoomsQuery(undefined);
-  console.log(data);
+  // console.log(data);
 
   if (isLoading) {
     return (
@@ -20,42 +19,31 @@ const AllRoom = () => {
     );
   }
 
-  console.log(data?.data);
+  // console.log(data?.data);
 
   // Filter and map the data
   const availableRooms = data?.data.filter((room: any) => !room.isDeleted);
 
-  console.log(availableRooms);
+  // console.log(availableRooms);
 
   return (
-    <div className="md:px-12 w-full p-4 mt-40 md:mt-12 rounded-md ">
-      {/* title */}
+    <div className="md:px-12 w-full p-4 md:mt-12 rounded-md ">
       {availableRooms?.length > 0 && (
-        <h2 className="text-3xl mb-2 font-medium tracking-widest text-center ">
-          MEETING<span className="text-[#072047]"> RO</span>OMS
-        </h2>
+        <SectionTitle
+          subHeading="Our Available Meeting Rooms"
+          sectionImg="https://i.ibb.co/SdK0n79/section-title-vector.png"
+        />
       )}
-      {/* underline */}
-      <div className="flex justify-center">
-        <div className="w-20 text-center rounded-md  h-[5px] bg-[#809580]"></div>
-      </div>
-      {/* MEEING ROOM ALL */}
       {availableRooms?.length > 0 ? (
         <div className="grid md:grid-cols-3 grid-cols-1 gap-5  justify-between items-center mt-16 rounded-lg">
-          {/* card- */}
-
           {availableRooms?.length > 0 &&
             availableRooms?.slice(0, 6)?.map((room: any) => {
               return (
-                <div
-                  key={room._id}
-                  className=" bg-[#49674a]   border  rounded-lg"
-                >
-                  <div>
+                <div key={room._id} className="bg-slate-500 border rounded-lg">
+                  <div className="md:mt-2 p-1">
                     <img
                       src={room?.image[0]}
-                      className="h-[350px] w-[500px] relative inset-0 bg-[#072047] opacity-70 "
-                      alt=""
+                      className="h-[350px] w-[500px] mx-auto relative inset-0 bg-[#072047] opacity-70 "
                     />
                   </div>
 
@@ -64,7 +52,7 @@ const AllRoom = () => {
                       {room?.name}
                     </h2>
                     <div className="flex  items-center text-white mx-2 gap-1">
-                      <FaRupeeSign className="text-white text-base" />
+                      <FaBangladeshiTakaSign />
                       <h2 className="text-base font-normal">
                         {" "}
                         {room?.pricePerSlot}
@@ -88,7 +76,6 @@ const AllRoom = () => {
                       </h2>
                     </div>
                   </div>
-                  {/* animity */}
                   <div className="flex   max-h-16 text-base  overflow-auto scroll-smooth mr-10 justify-between px-3  p-1  ">
                     <ul className="mt-2 ">
                       {room?.amenities?.map((amenity: string[], index: any) => (
@@ -102,7 +89,6 @@ const AllRoom = () => {
                       ))}
                     </ul>
                   </div>
-                  {/* /capacity & details button */}
                   <div className="flex items-center justify-between mt-4 mb-2 px-3  p-1  ">
                     <div>
                       <h2 className="flex  items-center gap-1 text-white font-normal text-left  text-base">
@@ -122,8 +108,6 @@ const AllRoom = () => {
                 </div>
               );
             })}
-
-          {/* card end */}
         </div>
       ) : (
         <h2 className="text-3xl mb-2 font-medium text-center mt-16  ">

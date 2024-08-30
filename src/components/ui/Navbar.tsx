@@ -1,10 +1,8 @@
 import { Link, NavLink } from "react-router-dom";
 import { useState } from "react";
-import { FaHamburger } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { Logout } from "@/redux/features/auth/authSlice";
-import { IoMdMenu } from "react-icons/io";
 import { TiThMenu } from "react-icons/ti";
 
 const Navbar = () => {
@@ -25,12 +23,11 @@ const Navbar = () => {
         />
         <h2 className="text-base md:text-2xl">MRB Systems</h2>
       </Link>
-      {/* others */}
       <div>
         <ul
           className={`md:flex gap-8 z-10 md:bg-transparent text-white  font-medium md:static absolute text-xl items-center ${
             open
-              ? "top-20 right-7 p-3 bg-cyan-300  text-black"
+              ? "top-20 right-7 p-3 bg-cyan-300 text-black"
               : "-top-48 right-0"
           } `}
         >
@@ -97,7 +94,7 @@ const Navbar = () => {
         {user?.email ? (
           <button
             onClick={handleLogOut}
-            className="text-base p-2 border-2  rounded-lg border-[#FAFFAF]"
+            className="text-base p-2 bg-pink-400 rounded text-white"
           >
             Logout
           </button>

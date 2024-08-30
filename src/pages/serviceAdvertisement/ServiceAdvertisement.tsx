@@ -1,38 +1,35 @@
-import {
-  FaClock,
-  FaCheckCircle,
-  FaCalendarAlt,
-  FaPhoneAlt,
-} from "react-icons/fa";
+import { FaClock, FaCheckCircle, FaPhoneAlt } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useEffect } from "react";
+import SectionTitle from "@/components/ui/SectionTitle";
+import { MdOutlineSecurity } from "react-icons/md";
 
 const ServiceAdvertisement = () => {
   const services = [
     {
-      title: "Real-Time Availability",
+      title: "Commitment to Security",
       description:
-        "Check the availability of rooms instantly and make your decision without delay.",
+        "We don't compromise on server security, get from highly skilled Engineers to maintain our server.",
       icon: <FaClock className="text-blue-500" />,
     },
     {
       title: "Instant Booking",
       description:
-        "Receive immediate confirmation of your bookings via email and SMS.",
+        "We give you guarantee about our service so you don't have to worry after buying us any service.",
       icon: <FaCheckCircle className="text-green-500" />,
     },
     {
-      title: "Flexible Scheduling",
+      title: "Reliablity",
       description:
-        "Schedule your bookings according to your convenience with no hassle.",
-      icon: <FaCalendarAlt className="text-purple-500" />,
+        "Success depends on strong honest relationships that involve having a strong bond with our customers.",
+      icon: <MdOutlineSecurity className="text-purple-500" />,
     },
     {
       title: "24/7 Support",
       description:
-        "Our support team is available round the clock to assist you.",
-      icon: <FaPhoneAlt className="text-red-500" />,
+        "Our Special Support Engineer does their best to give as much support as possible for us customers.",
+      icon: <FaPhoneAlt className="text-orange-500" />,
     },
   ];
 
@@ -41,14 +38,13 @@ const ServiceAdvertisement = () => {
   }, []);
 
   return (
-    <section className="md:px-4 w-full p-4 mt-40 md:mt-12 rounded-md">
+    <section className="md:px-4 w-full p-4 md:mt-12 rounded-md">
       <div className="container mx-auto text-center">
-        <h2 className="text-3xl mb-2 font-medium tracking-widest text-center">
-          OUR SERVICES
-        </h2>
-        <div className="flex justify-center">
-          <div className="w-20 text-center rounded-md  h-[5px] bg-[#809580]"></div>
-        </div>
+        <SectionTitle
+          subHeading="99.99% Uptime Guarantee"
+          heading="Why Choose MRB?"
+          sectionImg="https://i.ibb.co/SdK0n79/section-title-vector.png"
+        />
         <div className="grid grid-cols-1  mt-16  sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {services.map((service, index) => (
             <div
@@ -60,10 +56,10 @@ const ServiceAdvertisement = () => {
               <div className="flex justify-center">
                 <div className="text-4xl mb-4">{service.icon}</div>
               </div>
-              <h3 className="text-xl text-[#49674a]  font-bold mb-2">
+              <h3 className="text-xl text-slate-500 font-bold mb-2">
                 {service.title}
               </h3>
-              <p className="text-gray-600 text-sm">{service.description}</p>
+              <p className="text-gray-500 text-sm">{service.description}</p>
             </div>
           ))}
         </div>
