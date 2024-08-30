@@ -67,9 +67,7 @@ const Navbar = () => {
             <li className="text-xl">
               <NavLink
                 to="/dashboard"
-                className={({ isActive }) =>
-                  isActive ? " text-[#ECC500]" : ""
-                }
+                className={({ isActive }) => (isActive ? " text-black" : "")}
               >
                 Dashboard
               </NavLink>
@@ -79,9 +77,7 @@ const Navbar = () => {
             <li className="text-xl">
               <NavLink
                 to="/my-booking"
-                className={({ isActive }) =>
-                  isActive ? " text-[#ECC500]" : ""
-                }
+                className={({ isActive }) => (isActive ? " text-black" : "")}
               >
                 My Bookings
               </NavLink>

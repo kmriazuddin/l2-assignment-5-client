@@ -40,7 +40,6 @@ const Register = () => {
 
     try {
       const res = await addRegister(data).unwrap();
-      console.log(res);
       if (res?.success === true) {
         toast.success("Sign up Successful", { id: toastId, duration: 2000 });
         navigate("/login");

@@ -20,12 +20,15 @@ const MainLayout = () => {
       {/* Sidebar */}
       <div
         id="sidebar"
-        className={` z-20 inset-y-0 left-0 w-64 sticky h-6/12 bg-[#5b765c] text-white transform transition-transform ${
+        className={`z-20 inset-y-0 left-0 w-64 sticky h-screen bg-cyan-500 text-white transform transition-transform ${
           isSidebarOpen ? "translate-x-0" : "-translate-x-full"
         } lg:translate-x-0`}
       >
         <div className="p-4">
-          <h1 className="text-lg mb-4 text-center">{user?.email}</h1>
+          <h1 className="text-lg mb-4">{user?.email}</h1>
+          <h1 className="text-lg mb-4">
+            User Role: <span className="font-semibold">{user?.role}</span>
+          </h1>
           <div className="w-full h-[1px] bg-white"></div>
         </div>
         <ul className="p-4">
@@ -34,7 +37,7 @@ const MainLayout = () => {
               <li className="mb-2">
                 <Link
                   to="/dashboard/all-room"
-                  className="block px-4 py-2 hover:bg-[#628a62] rounded"
+                  className="block px-4 py-2 hover:bg-pink-500 rounded"
                 >
                   All Room
                 </Link>
@@ -42,7 +45,7 @@ const MainLayout = () => {
               <li className="mb-2">
                 <Link
                   to="/dashboard/all-slot"
-                  className="block px-4 py-2 hover:bg-[#628a62] rounded"
+                  className="block px-4 py-2 hover:bg-pink-500 rounded"
                 >
                   All Slot
                 </Link>
@@ -50,7 +53,7 @@ const MainLayout = () => {
               <li className="mb-2">
                 <Link
                   to="/dashboard/all-booking"
-                  className="block px-4 py-2 hover:bg-[#628a62] rounded"
+                  className="block px-4 py-2 hover:bg-pink-500 rounded"
                 >
                   All Booking
                 </Link>
@@ -61,7 +64,7 @@ const MainLayout = () => {
             <li className="mb-2">
               <Link
                 to="/dashboard/create-booking"
-                className="block px-4 py-2 hover:bg-[#628a62] rounded"
+                className="block px-4 py-2 hover:bg-pink-500 rounded"
               >
                 Create Booking
               </Link>
@@ -69,9 +72,6 @@ const MainLayout = () => {
           )}
         </ul>
       </div>
-
-      {/* Backdrop */}
-      {/* newly added */}
       {isSidebarOpen && <Backdrop onClick={() => setIsSidebarOpen(false)} />}
 
       {/* Main content */}

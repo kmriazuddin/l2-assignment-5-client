@@ -2,20 +2,18 @@
 import { useMyBookingsQuery } from "@/redux/features/booking/bookingManagementApi";
 
 const MyBooking = () => {
-  const { data, isLoading } = useMyBookingsQuery(undefined, {
-    pollingInterval: 1000,
-  });
+  const { data, isLoading } = useMyBookingsQuery(undefined);
 
   if (isLoading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-[#557856]"></div>
+        <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-pink-500"></div>
       </div>
     );
   }
 
   return (
-    <div className="container mx-auto mt-40 md:mt-0 py-10">
+    <div className="container mx-auto py-10">
       {data?.data?.length > 0 ? (
         <>
           {" "}
@@ -76,8 +74,9 @@ const MyBooking = () => {
           </div>
         </>
       ) : (
-        <h2 className="text-3xl mt-5 mb-2 font-medium tracking-wider text-center">
+        <h2 className="text-3xl md:mt-5 mb-2 font-medium tracking-wider text-center">
           There is no booking history
+          <img src="https://i.ibb.co/DD0XTcK/404-error.jpg" />
         </h2>
       )}
     </div>

@@ -10,10 +10,10 @@ import {
   setBookingData,
   TBooking,
 } from "@/redux/features/booking/bookingSlice";
+import SectionTitle from "@/components/ui/SectionTitle";
 
 const BookingProcess = () => {
   const { id: roomId } = useParams();
-
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedSlots, setSelectedSlots] = useState([]);
   const user = useAppSelector((state) => state.auth.user);
@@ -24,7 +24,6 @@ const BookingProcess = () => {
   });
 
   const dispatch = useAppDispatch();
-
   const navigate = useNavigate();
 
   console.log(slotData);
@@ -65,15 +64,12 @@ const BookingProcess = () => {
   };
 
   return (
-    <div className="container mt-40 md:mt-0 mx-auto px-4 py-8">
-      <h2 className="text-3xl mb-2 font-medium tracking-wider text-center">
-        Booking Process for Room
-      </h2>
-      <div className="flex justify-center">
-        <div className="w-20 text-center rounded-md h-[5px] bg-[#809580]"></div>
-      </div>
-
-      <div className="bg-white border mt-5 border-[#809580] p-6 rounded-lg shadow-md">
+    <div className="container mx-auto px-4 py-8">
+      <SectionTitle
+        subHeading="Booking Process"
+        sectionImg="https://i.ibb.co/SdK0n79/section-title-vector.png"
+      />
+      <div className="bg-white border mt-5 border-cyan-500 p-6 rounded-lg shadow-md">
         <h2 className="text-xl font-semibold mb-4">Select Booking Date</h2>
         <DatePicker
           selected={selectedDate}
@@ -114,7 +110,7 @@ const BookingProcess = () => {
 
         <h2 className="text-xl font-semibold mt-6 mb-4">Your Information</h2>
         {userData ? (
-          <div className="bg-[#dbe1db] p-4 rounded-lg">
+          <div className="bg-slate-200 p-4 rounded-lg">
             <p>
               <strong>Name:</strong> {userData.data.name}
             </p>
@@ -136,7 +132,7 @@ const BookingProcess = () => {
           <button
             onClick={handleBookingConfirmation}
             disabled={selectedSlots?.length === 0}
-            className={`bg-[#557856] text-white px-6 py-3 rounded-lg text-base md:text-lg font-semibold hover:bg-[#455e45] transition ${
+            className={`bg-cyan-500 text-white px-6 py-3 rounded-lg text-base md:text-lg font-semibold hover:bg-pink-500 transition ${
               selectedSlots?.length === 0
                 ? "opacity-50 text-gray-500 cursor-not-allowed"
                 : ""
@@ -146,7 +142,7 @@ const BookingProcess = () => {
           </button>
           <Link
             to={`/room/${roomId}`}
-            className="bg-gray-300 text-gray-700 px-6 py-3 rounded-lg text-base md:text-lg  font-semibold hover:bg-gray-400 transition"
+            className="bg-green-500 text-white px-6 py-3 rounded-lg text-base md:text-lg  font-semibold hover:bg-green-800 transition"
           >
             Back to Room Details
           </Link>

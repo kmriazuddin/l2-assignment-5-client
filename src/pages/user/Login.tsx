@@ -21,7 +21,6 @@ const Login = () => {
 
     const email = event.target.email.value;
     const password = event.target.password.value;
-    console.log(email, password);
     event.target.reset();
     try {
       const userInfo = {
@@ -29,30 +28,19 @@ const Login = () => {
         password,
       };
 
-      //server login
       const res = await login(userInfo).unwrap();
-
-      console.log(res, "res");
-      //* verify token and decode user
       const user = verifyToken(res?.token);
-      console.log("user", user);
-      // console.log(user);
-      //* set user & token to local state
       dispatch(setUser({ user: user, token: res?.token }));
-      toast.success("Logged in", { id: toastId, duration: 2000 });
-      //set user, token in local state
       navigate("/");
     } catch (err) {
       // @ts-expect-error: Unreachable code error
       toast.error(err?.data?.message, { id: toastId, duration: 2000 });
-      console.log(err);
     }
   };
 
   return (
-    <div className="md:flex items-center justify-center  h-full md:p-16">
-      <div className="md:flex mb-20 mt-36  gap-10 items-center justify-center md:mt-7  ">
-        {/* login pic */}
+    <div className="md:flex items-center justify-center h-full md:p-16">
+      <div className="md:flex mb-20 mt-36 gap-10 items-center justify-center md:mt-7">
         <div className=" ">
           <img
             src="https://i.ibb.co/yfwfG4n/login.png"
@@ -64,7 +52,7 @@ const Login = () => {
         <div className="w-96 p-6 shadow-md bg-white rounded">
           <div className="text-center mb-3 font-bold text-3xl justify-center gap-3 flex items-center">
             <FaUser className="text-cyan-500" />
-            <h1 className="animate-text text-rose-500  text-xl font-semibold">
+            <h1 className="animate-text text-rose-500 text-xl font-semibold">
               Sign in
             </h1>
           </div>
@@ -99,15 +87,15 @@ const Login = () => {
                 />
                 <span onClick={() => setEye(!eye)}>
                   {eye ? (
-                    <AiFillEye className="text-4xl border focus:outline-none focus:ring-0 focus:border-gray-600 rounded " />
+                    <AiFillEye className="text-4xl border focus:outline-none focus:ring-0 focus:border-gray-600 rounded" />
                   ) : (
-                    <AiFillEyeInvisible className="text-4xl border focus:outline-none focus:ring-0 focus:border-gray-600   rounded " />
+                    <AiFillEyeInvisible className="text-4xl border focus:outline-none focus:ring-0 focus:border-gray-600 rounded" />
                   )}
                 </span>
               </div>
             </div>
             <div className="mt-3 ">
-              <label className="label gap-2 flex  items-center cursor-pointer">
+              <label className="label gap-2 flex items-center cursor-pointer">
                 <input type="checkbox" className="checkbox" />
                 <span className="label-text">Remember Me</span>
               </label>

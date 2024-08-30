@@ -1,14 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useGetSingleRoomQuery } from "@/redux/features/admin/roomManagementApi";
 import { useParams, Link } from "react-router-dom";
-import { FaRupeeSign, FaPlus } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa";
 import { useState, useEffect } from "react";
+import { FaBangladeshiTakaSign } from "react-icons/fa6";
 
 const SingleRoom = () => {
   const { id } = useParams();
-  const { data: singleRoom, isLoading } = useGetSingleRoomQuery(id, {
-    pollingInterval: 1000,
-  });
+  const { data: singleRoom, isLoading } = useGetSingleRoomQuery(id);
 
   const [selectedImage, setSelectedImage] = useState("");
 
@@ -17,8 +16,6 @@ const SingleRoom = () => {
       setSelectedImage(singleRoom.data.image[0]);
     }
   }, [singleRoom]);
-
-  console.log(selectedImage);
 
   const handleImageClick = (image: any) => {
     setSelectedImage(image);
@@ -45,12 +42,11 @@ const SingleRoom = () => {
     singleRoom.data;
 
   return (
-    <div className="bg-[#49674a] mt-40 md:mt-0 py-16">
+    <div className="bg-slate-500 py-16">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl border border-[#c8d1c9] p-1 mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
           <div className="relative">
             <div className="md:flex flex-col md:flex-row items-start">
-              {/* Main Image */}
               <div className="flex-grow p-2">
                 <div
                   className="relative w-full p-4 rounded-md min-h-[400px] flex items-center justify-center bg-[#ddd]"
@@ -61,13 +57,11 @@ const SingleRoom = () => {
                   }}
                 ></div>
               </div>
-
-              {/* Thumbnail Images */}
-              <div className="flex  md:flex-col gap-4 mt-4 md:mt-2 md:ml-2">
+              <div className="flex md:flex-col gap-4 mt-4 md:mt-2 md:ml-2">
                 {singleRoom.data.image.map((image: any, index: number) => (
                   <button
                     key={index}
-                    className="w-24 z-50 border-2 p-1 hover:border-white  border-[#557856] h-24 rounded-md cursor-pointer"
+                    className="w-24 z-50 border-2 p-1 hover:border-white border-pink-500 h-24 rounded-md cursor-pointer"
                     onClick={() => handleImageClick(image)}
                   >
                     <div
@@ -84,11 +78,11 @@ const SingleRoom = () => {
             </div>
 
             <div className="absolute inset-0 bg-black opacity-25"></div>
-            <div className="absolute bottom-32 md:bottom-0  left-0 right-0 px-6 py-4 bg-gradient-to-t from-black to-transparent text-white">
-              <h1 className="text-xl   md:text-3xl font-bold">{name}</h1>
+            <div className="absolute bottom-32 md:bottom-0 left-0 right-0 px-6 py-4 bg-gradient-to-t from-black to-transparent text-white">
+              <h1 className="text-xl md:text-3xl font-bold">{name}</h1>
               <div className="flex justify-start gap-5 md:mt-2">
                 <div className="flex items-center text-white">
-                  <FaRupeeSign className="text-white text-base" />
+                  <FaBangladeshiTakaSign className="text-white text-base" />
                   <h2 className="text-base font-normal">{pricePerSlot}</h2>
                 </div>
                 <div className="flex items-center text-white">
@@ -111,9 +105,9 @@ const SingleRoom = () => {
                 internet, a projector, and a whiteboard for your needs.
               </p>
               <p className="text-lg font-semibold">Special Offer:</p>
-              <p className="bg-[#c8d1c9] mt-3 text-green-800 p-4 rounded-lg">
+              <p className="bg-green-500 mt-3 text-white p-4 rounded-lg">
                 Book now and get 20% off your first booking! Use code{" "}
-                <strong className="text-green-900">BOOK20</strong> at checkout.
+                <strong className="text-pink-500">BOOK20</strong> at checkout.
               </p>
             </div>
 
@@ -139,7 +133,7 @@ const SingleRoom = () => {
             <div className="flex justify-center mt-6">
               <Link
                 to={`/book/${id}`}
-                className="bg-[#557856] text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-[#455e45] transition"
+                className="bg-cyan-500 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:bg-pink-500 transition"
               >
                 Book Now
               </Link>

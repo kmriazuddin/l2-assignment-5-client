@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useMemo } from "react";
 import { useGetAllRoomsQuery } from "@/redux/features/admin/roomManagementApi";
-import { FaPlus, FaRupeeSign } from "react-icons/fa";
+import { FaPlus } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import useDebounce from "@/redux/hooks/useDebounce";
+import { FaBangladeshiTakaSign } from "react-icons/fa6";
 
 const MeetingRooms = () => {
   const { data, isLoading } = useGetAllRoomsQuery(undefined);
@@ -13,15 +14,13 @@ const MeetingRooms = () => {
   const [selectedPriceRange, setSelectedPriceRange] = useState<string>("");
 
   const [sortOption, setSortOption] = useState<string>("");
-  const [currentPage, setCurrentPage] = useState(1); //  added
-  const roomsPerPage = 6; // added
+  const [currentPage, setCurrentPage] = useState(1);
+  const roomsPerPage = 6;
 
   const debouncedSearchQuery = useDebounce(searchQuery, 1000);
 
   // Filter and map the data
   const availableRooms = data?.data.filter((room: any) => !room.isDeleted);
-
-  // console.log("avvvv=>>>", availableRooms);
 
   const filteredRooms = useMemo(() => {
     let rooms = availableRooms || [];
@@ -88,27 +87,26 @@ const MeetingRooms = () => {
   if (isLoading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-[#4A249D]"></div>
+        <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-pink-500"></div>
       </div>
     );
   }
 
   return (
-    <div className="md:px-12 w-full p-4 mt-40 md:mt-12 rounded-md ">
-      {/* Search and Filter Section */}
-      <div className="md:flex flex-col mt-4 md:mt-0 md:flex-row items-center justify-between mb-4">
+    <div className="md:px-12 w-full p-4 md:mt-12 rounded-md ">
+      <div className="bg-slate-400 md:flex flex-col px-2 py-3 mt-4 md:mt-0 md:flex-row items-center justify-between mb-4">
         <input
           type="text"
-          placeholder="Search by room name or price"
+          placeholder="Search Room..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="p-2 border rounded-md mb-2 md:mb-0"
+          className="p-2 border rounded-md mb-2 md:mb-0 mx-1"
         />
 
         <select
           value={selectedCapacityRange}
           onChange={(e) => setSelectedCapacityRange(e.target.value)}
-          className="p-2 border rounded-md mb-2 md:mb-0"
+          className="p-2 border rounded-md mb-2 md:mb-0 mx-1"
         >
           <option value="">Select Capacity</option>
           <option value="10-50">10-50</option>
@@ -119,18 +117,18 @@ const MeetingRooms = () => {
         <select
           value={selectedPriceRange}
           onChange={(e) => setSelectedPriceRange(e.target.value)}
-          className="p-2 border rounded-md mb-2 md:mb-0"
+          className="p-2 border rounded-md mb-2 md:mb-0 mx-1"
         >
           <option value="">Select Price Range</option>
-          <option value="0-500">₹0 - ₹500</option>
-          <option value="500-900">₹500 - ₹900</option>
-          <option value="1000-2000">₹1000 - ₹2000</option>
+          <option value="0-500">0 - 500</option>
+          <option value="500-900">500 - 900</option>
+          <option value="1000-2000">1000 - 2000</option>
         </select>
 
         <select
           value={sortOption}
           onChange={(e) => setSortOption(e.target.value)}
-          className="p-2 border rounded-md mb-2 md:mb-0"
+          className="p-2 border rounded-md mb-2 md:mb-0 mx-1"
         >
           <option value="">Sort By</option>
           <option value="priceLowToHigh">Price: Low to High</option>
@@ -144,21 +142,19 @@ const MeetingRooms = () => {
             setSelectedPriceRange("");
             setSortOption("");
           }}
-          className="p-2 border  rounded-md bg-[#49674a] text-white"
+          className="p-2 border mx-1 rounded-md bg-pink-500 text-white"
         >
           Clear Filters
         </button>
       </div>
-
-      {/* Meeting Room Cards */}
       {currentRooms?.length > 0 ? (
         <div className="grid md:grid-cols-3 grid-cols-1 gap-5 justify-between items-center mt-16 rounded-lg">
           {currentRooms.map((room: any) => (
-            <div key={room._id} className="bg-[#49674a] border rounded-lg">
-              <div>
+            <div key={room._id} className="bg-slate-500 border rounded-lg">
+              <div className="mt-2">
                 <img
                   src={room?.image[0]}
-                  className="h-[350px] w-[500px] relative inset-0 bg-[#072047] opacity-70"
+                  className="h-[350px] w-[500px] mx-auto relative inset-0 bg-[#072047] opacity-70"
                   alt=""
                 />
               </div>
@@ -168,7 +164,7 @@ const MeetingRooms = () => {
                   {room?.name}
                 </h2>
                 <div className="flex items-center text-white mx-2 gap-1">
-                  <FaRupeeSign className="text-white text-base" />
+                  <FaBangladeshiTakaSign className="text-white text-base" />
                   <h2 className="text-base font-normal">
                     {room?.pricePerSlot}
                   </h2>
@@ -190,8 +186,6 @@ const MeetingRooms = () => {
                   </h2>
                 </div>
               </div>
-
-              {/* Amenities */}
               <div className="flex max-h-16 text-base overflow-auto scroll-smooth mr-10 justify-between px-3 p-1">
                 <ul className="mt-2">
                   {room?.amenities?.map((amenity: string, index: number) => (
@@ -205,8 +199,6 @@ const MeetingRooms = () => {
                   ))}
                 </ul>
               </div>
-
-              {/* Capacity & Details Button */}
               <div className="flex items-center justify-between mt-4 mb-2 px-3 p-1">
                 <div>
                   <h2 className="flex items-center gap-1 text-white font-normal text-left text-base">
@@ -228,7 +220,7 @@ const MeetingRooms = () => {
         </div>
       ) : (
         <h2 className="text-3xl mb-2 font-medium text-center mt-16">
-          No Room Found
+          No Room Found!
         </h2>
       )}
 
@@ -239,8 +231,8 @@ const MeetingRooms = () => {
             onClick={() => handlePageChange(index + 1)}
             className={`px-4 py-2 mx-1 ${
               currentPage === index + 1
-                ? "bg-[#49674a] text-white"
-                : "bg-white text-[#49674a] border border-[#49674a]"
+                ? "bg-pink-500 text-white"
+                : "bg-white text-pink-500 border border-cyan-500"
             } border rounded-md`}
           >
             {index + 1}
