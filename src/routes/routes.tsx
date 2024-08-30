@@ -29,10 +29,6 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
 
     children: [
-      //   {
-      //     path: "contacts/:contactId",
-      //     element: <Contact />,
-      //   },
       {
         path: "/",
         element: <Home />,
@@ -97,7 +93,6 @@ const router = createBrowserRouter([
         element: <MainLayout />,
         children: [
           {
-            //jkhn clickable hbe ,, // -> /dashboard/create-booking as dashboard er under e eta
             path: "create-booking",
             element: <CreateBooking />,
           },
