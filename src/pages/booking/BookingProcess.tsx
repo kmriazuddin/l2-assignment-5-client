@@ -26,19 +26,16 @@ const BookingProcess = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  console.log(slotData);
-
   if (isLoading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-[#557856]"></div>
+        <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-pink-500"></div>
       </div>
     );
   }
 
   // Filter and map the data
   const availableSlots = slotData?.data.filter((room: any) => !room.isBooked);
-  console.log(availableSlots);
 
   const handleSlotSelection = (slotId: any) => {
     setSelectedSlots((prevSlots: any) =>
@@ -48,8 +45,6 @@ const BookingProcess = () => {
     );
   };
 
-  console.log(selectedSlots);
-
   const handleBookingConfirmation = () => {
     const payload: TBooking = {
       date: selectedDate.toISOString().split("T")[0],
@@ -57,8 +52,6 @@ const BookingProcess = () => {
       room: roomId as string,
       user: userData?.data?._id,
     };
-
-    console.log("Booking Payload:", payload);
     dispatch(setBookingData(payload));
     navigate("/checkout");
   };

@@ -163,12 +163,12 @@ const AllBookingByTabular = () => {
                   variant="success"
                   onClick={() => handleApprove(booking._id)}
                 >
-                  <ImCheckboxChecked className="text-green-600 text-lg" />
+                  <ImCheckboxChecked className="text-green-600 text-lg md:text-3xl" />
                 </Button>
               )}
 
               <button onClick={() => handleDelete(booking._id)}>
-                <MdAutoDelete className="text-orange-600 text-2xl" />
+                <MdAutoDelete className="text-orange-600 text-2xl md:text-4xl" />
               </button>
             </TableCell>
           </TableRow>

@@ -73,7 +73,6 @@ const MainLayout = () => {
         </ul>
       </div>
       {isSidebarOpen && <Backdrop onClick={() => setIsSidebarOpen(false)} />}
-
       {/* Main content */}
       <div className="flex-1 ml-0 lg:ml-12 p-4">
         <button
