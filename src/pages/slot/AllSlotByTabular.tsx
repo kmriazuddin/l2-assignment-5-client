@@ -7,7 +7,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-// Use the correct API hook
 import { RiDeleteBack2Fill } from "react-icons/ri";
 import { FaPenToSquare } from "react-icons/fa6";
 import { useState } from "react";
@@ -19,24 +18,19 @@ import { useDeleteSlotMutation } from "@/redux/features/admin/slotManagementApi"
 
 const AllSlotByTabular = () => {
   const [selectedSlotId, setSelectedSlotId] = useState(null);
-  const { data, isLoading } = useGetAllSlotsQuery(undefined, {
-    pollingInterval: 1000,
-  });
+  const { data, isLoading } = useGetAllSlotsQuery(undefined);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [createDialogOpen, setCreateDialogOpen] = useState(false);
   const [deleteSlot] = useDeleteSlotMutation();
-
-  const [alertShown, setAlertShown] = useState(false); // State to control alert visibility
+  const [alertShown, setAlertShown] = useState(false);
 
   if (isLoading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-[#557856]"></div>
+        <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-pink-500"></div>
       </div>
     );
   }
-
-  console.log(data);
 
   const handleUpdate = (slotId: any) => {
     setSelectedSlotId(slotId);
@@ -48,8 +42,6 @@ const AllSlotByTabular = () => {
   };
 
   function handleDelete(id: string, booked: boolean) {
-    console.log(booked);
-
     //deleted slot will not be delete twice
     if (booked && !alertShown) {
       swal({
@@ -61,9 +53,7 @@ const AllSlotByTabular = () => {
       }).then(() => {
         setAlertShown(false);
       });
-
       setAlertShown(true);
-
       return;
     }
 
@@ -92,8 +82,6 @@ const AllSlotByTabular = () => {
         swal("Cancelled", "The slot is safe!", "info");
       }
     });
-
-    console.log(id, "del");
   }
 
   return (
@@ -102,31 +90,31 @@ const AllSlotByTabular = () => {
         <button
           type="submit"
           onClick={() => handleAdd()}
-          className="btn btn-primary text-lg px-4 mt-4 py-2 bg-[#557856] text-white font-medium rounded-md hover:bg-[#a2c5a3]"
+          className="btn btn-primary text-lg px-4 mt-4 py-2 bg-cyan-500 text-white font-medium rounded-md hover:bg-pink-500"
         >
           Add Slot
         </button>
       </div>
       <Table className="mt-12">
         <TableHeader>
-          <TableRow className="border-2 border-[#557856]">
-            <TableHead className="text-[#557856] font-medium text-base">
+          <TableRow className="border-2 border-cyan-500">
+            <TableHead className="text-slate-500 font-medium text-base">
               Room Name
             </TableHead>
-            <TableHead className="text-[#557856] font-medium text-base">
+            <TableHead className="text-slate-500 font-medium text-base">
               Start Time
             </TableHead>
-            <TableHead className="text-[#557856] font-medium text-base">
+            <TableHead className="text-slate-500 font-medium text-base">
               End Time
             </TableHead>
-            <TableHead className="text-[#557856] font-medium text-base">
+            <TableHead className="text-slate-500 font-medium text-base">
               Date
             </TableHead>
 
-            <TableHead className="text-[#557856] font-medium text-left text-base">
+            <TableHead className="text-slate-500 font-medium text-left text-base">
               Booked
             </TableHead>
-            <TableHead className="text-[#557856] font-medium text-base">
+            <TableHead className="text-slate-500 font-medium text-base">
               Actions
             </TableHead>
           </TableRow>
@@ -144,10 +132,10 @@ const AllSlotByTabular = () => {
                   onClick={() => handleUpdate(slot?._id)}
                   className="mr-2"
                 >
-                  <FaPenToSquare className="text-[#557856] text-xl" />
+                  <FaPenToSquare className="text-green-500 text-xl md:text-4xl" />
                 </button>
                 <button onClick={() => handleDelete(slot?._id, slot.isBooked)}>
-                  <RiDeleteBack2Fill className="text-red-600 text-xl" />
+                  <RiDeleteBack2Fill className="text-red-600 text-xl md:text-4xl" />
                 </button>
               </TableCell>
             </TableRow>

@@ -20,14 +20,10 @@ import CreateRoom from "./CreateRoom";
 
 const AllRoomByTabular = () => {
   const [selectedRoomId, setSelectedRoomId] = useState(null);
-
   const { data, isLoading } = useGetAllRoomsQuery(undefined);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-
   const [createDialogOpen, setCreateDialogOpen] = useState(false);
-
   const [deleteRoom] = useDeleteRoomMutation();
-
   const [alertShown, setAlertShown] = useState(false);
 
   if (isLoading) {
@@ -38,8 +34,6 @@ const AllRoomByTabular = () => {
     );
   }
 
-  console.log(data);
-
   const handleUpdate = (roomId: any) => {
     setSelectedRoomId(roomId);
     setIsDialogOpen(true);
@@ -49,8 +43,6 @@ const AllRoomByTabular = () => {
   };
 
   function handleDelete(id: string, deleted: boolean) {
-    console.log(deleted);
-
     //deleted room will not be delete twice
     if (deleted && !alertShown) {
       swal({
@@ -62,7 +54,6 @@ const AllRoomByTabular = () => {
       }).then(() => {
         setAlertShown(false);
       });
-
       // Set the alert
       setAlertShown(true);
 
@@ -93,8 +84,6 @@ const AllRoomByTabular = () => {
         swal("Cancelled", "The room is safe!", "info");
       }
     });
-
-    console.log(id, "del");
   }
 
   return (
@@ -155,7 +144,7 @@ const AllRoomByTabular = () => {
                 <TableCell>{room?.isDeleted ? "Yes" : "No"}</TableCell>
                 <TableCell className="flex gap-3 mt-3 items-center">
                   <button onClick={() => handleUpdate(room?._id)}>
-                    <FaPenToSquare className="text-[#557856] text-2xl md:text-4xl" />
+                    <FaPenToSquare className="text-green-500 text-2xl md:text-4xl" />
                   </button>
                   <button
                     onClick={() => handleDelete(room?._id, room?.isDeleted)}

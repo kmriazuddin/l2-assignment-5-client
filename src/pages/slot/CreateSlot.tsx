@@ -2,7 +2,6 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import z from "zod";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-
 import { useGetAllRoomsQuery } from "@/redux/features/admin/roomManagementApi";
 import { useAddslotMutation } from "@/redux/features/admin/slotManagementApi";
 import { toast } from "sonner";
@@ -50,25 +49,20 @@ const CreateSlot = ({ isDialogOpen, setIsDialogOpen }: any) => {
   if (isLoading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-[#557856]"></div>
+        <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-pink-500"></div>
       </div>
     );
   }
 
   // Filter and map the data
-  const availableRooms = allRoom?.data.filter((room:any) => !room.isDeleted);
-
-  console.log(availableRooms);
+  const availableRooms = allRoom?.data.filter((room: any) => !room.isDeleted);
 
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    console.log("Form data:", data);
-    // Reset form after submission
     reset();
     const toastId = toast.loading("adding slot...");
 
     try {
       const res = await addSlot(data).unwrap();
-      console.log(res);
 
       if (res?.success) {
         toast.success(res?.data?.message, { id: toastId });
@@ -87,7 +81,7 @@ const CreateSlot = ({ isDialogOpen, setIsDialogOpen }: any) => {
       <DialogTrigger>Create Slot</DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle className="text-[#557856]">Create Slot</DialogTitle>
+          <DialogTitle className="text-cyan-500">Create Slot</DialogTitle>
           <DialogDescription className="">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 mt-5">
               <div>
@@ -149,7 +143,7 @@ const CreateSlot = ({ isDialogOpen, setIsDialogOpen }: any) => {
               <div className="flex justify-center">
                 <button
                   type="submit"
-                  className="btn btn-primary text-lg px-6 py-3 bg-[#7AAC7B] text-[#072047] font-semibold rounded-md hover:bg-[#a2c5a3] "
+                  className="btn btn-primary text-lg px-6 py-3 bg-cyan-500 text-white font-semibold rounded-md hover:bg-pink-500"
                 >
                   Create Slot
                 </button>

@@ -164,7 +164,7 @@ const CreateRoom = ({ isDialogOpen, setIsDialogOpen }: any) => {
       <DialogTrigger>Create Meeting Room</DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle className="text-[#557856]">
+          <DialogTitle className="text-cyan-500">
             Create Meeting Room
           </DialogTitle>
           <DialogDescription className="">
@@ -181,7 +181,7 @@ const CreateRoom = ({ isDialogOpen, setIsDialogOpen }: any) => {
                   <Button
                     type="button"
                     onClick={handleAddImage}
-                    className="ml-2 bg-[#7AAC7B] hover:bg-[#628a62] text-[#072047]"
+                    className="ml-2 bg-cyan-500 hover:bg-pink-500 text-white"
                   >
                     Add
                   </Button>
@@ -206,7 +206,7 @@ const CreateRoom = ({ isDialogOpen, setIsDialogOpen }: any) => {
                         onClick={() => handleRemoveImage(index)}
                         className="ml-2"
                       >
-                        <TiDelete className="text-3xl text-cyan-500 hover:bg-pink-500" />
+                        <TiDelete className="text-3xl text-cyan-500" />
                       </button>
                     </li>
                   ))}
@@ -287,7 +287,7 @@ const CreateRoom = ({ isDialogOpen, setIsDialogOpen }: any) => {
                   <Button
                     type="button"
                     onClick={handleAddAmenity}
-                    className="ml-2 bg-[#7AAC7B] hover:bg-[#628a62] text-[#072047] "
+                    className="ml-2 bg-cyan-500 hover:bg-pink-500 text-white "
                   >
                     Add
                   </Button>
@@ -310,7 +310,7 @@ const CreateRoom = ({ isDialogOpen, setIsDialogOpen }: any) => {
                         onClick={() => handleRemoveAmenity(index)}
                         className="ml-2"
                       >
-                        <TiDelete className=" text-3xl  text-[#7AAC7B] " />
+                        <TiDelete className=" text-3xl  text-slate-500 " />
                       </button>
                     </li>
                   ))}
@@ -319,7 +319,7 @@ const CreateRoom = ({ isDialogOpen, setIsDialogOpen }: any) => {
               <div className="flex justify-center">
                 <button
                   type="submit"
-                  className="btn btn-primary text-lg px-6 mt-1 py-3 bg-[#7AAC7B] text-[#072047] font-semibold rounded-md hover:bg-[#a2c5a3]"
+                  className="btn btn-primary text-lg px-6 mt-1 py-3 bg-cyan-500 text-white font-semibold rounded-md hover:bg-pink-500"
                 >
                   Create Room
                 </button>

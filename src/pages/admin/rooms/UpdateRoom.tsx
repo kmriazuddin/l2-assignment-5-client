@@ -12,7 +12,6 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { TiDelete } from "react-icons/ti";
-
 import { roomManagementApi } from "@/redux/features/admin/roomManagementApi";
 import { toast } from "sonner";
 import { useState } from "react";
@@ -21,14 +20,8 @@ import { Button } from "@/components/ui/button";
 import swal from "sweetalert";
 
 const updateMeetingRoomValidationSchema = z.object({
-  image: z
-    .array(z.string().url("Each image must be a valid URL"))
-    // .min(2, "At least two images are required")
-    .optional(),
+  image: z.array(z.string().url("Each image must be a valid URL")).optional(),
   name: z.string().min(1, "Name is required"),
-  //   name: z.string().min(1, "Name is required").refine((value) => /^[a-zA-Z\s]+$/.test(value), {
-  //     message: "name must only contain alphabetic characters",
-  //   }),
   roomNo: z.preprocess((val) => Number(val), z.number().optional()),
   floorNo: z.preprocess((val) => Number(val), z.number().optional()),
   capacity: z.preprocess((val) => Number(val), z.number().optional()),
@@ -210,15 +203,13 @@ const UpdateRoom = ({ roomId, isDialogOpen, setIsDialogOpen }: any) => {
     setRoomDetails({ ...roomDetails, image: updatedImages });
   };
 
-
-
   console.log(roomDetails);
   return (
     <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
       <DialogTrigger>Update</DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle className="text-[#557856]">
+          <DialogTitle className="text-cyan-500">
             Update Meeting Room
           </DialogTitle>
           <DialogDescription className="">
@@ -235,7 +226,7 @@ const UpdateRoom = ({ roomId, isDialogOpen, setIsDialogOpen }: any) => {
                   <Button
                     type="button"
                     onClick={handleAddImage}
-                    className="ml-2 bg-[#7AAC7B] hover:bg-[#628a62] text-[#072047]"
+                    className="ml-2 bg-cyan-500 hover:bg-pink-500 text-white"
                   >
                     Add
                   </Button>
@@ -260,7 +251,7 @@ const UpdateRoom = ({ roomId, isDialogOpen, setIsDialogOpen }: any) => {
                         onClick={() => handleRemoveImage(index)}
                         className="ml-2"
                       >
-                        <TiDelete className="text-3xl text-[#7AAC7B]" />
+                        <TiDelete className="text-3xl text-slate-500" />
                       </button>
                     </li>
                   ))}
@@ -350,7 +341,7 @@ const UpdateRoom = ({ roomId, isDialogOpen, setIsDialogOpen }: any) => {
                   <Button
                     type="button"
                     onClick={handleAddAmenity}
-                    className="ml-2 bg-[#7AAC7B] hover:bg-[#628a62] text-[#072047] "
+                    className="ml-2 bg-cyan-500 hover:bg-pink-500 text-white "
                   >
                     Add
                   </Button>
@@ -373,14 +364,8 @@ const UpdateRoom = ({ roomId, isDialogOpen, setIsDialogOpen }: any) => {
                         onClick={() => handleRemoveAmenity(index)}
                         className="ml-2"
                       >
-                        <TiDelete className=" text-3xl  text-[#7AAC7B] " />
+                        <TiDelete className=" text-3xl  text-slate-500" />
                       </button>
-
-                      {/* {index > 0 && errors?.amenities && (
-                       // @ts-expect-error: Unreachable code error
-         <p className="text-red-500"> {errors?.amenities[index]?.message}
-                  </p>
-                )} */}
                     </li>
                   ))}
                 </ul>
@@ -388,7 +373,7 @@ const UpdateRoom = ({ roomId, isDialogOpen, setIsDialogOpen }: any) => {
               <div className="flex justify-center">
                 <button
                   type="submit"
-                  className="btn btn-primary text-lg px-6 mt-4 py-3 bg-[#7AAC7B] text-[#072047] font-semibold rounded-md hover:bg-[#a2c5a3]"
+                  className="btn btn-primary text-lg px-6 mt-4 py-3 bg-cyan-500 text-white font-semibold rounded-md hover:bg-pink-500"
                 >
                   Update Room
                 </button>

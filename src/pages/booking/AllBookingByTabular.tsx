@@ -15,13 +15,9 @@ import {
 } from "@/redux/features/booking/bookingManagementApi";
 import swal from "sweetalert";
 import { toast } from "sonner";
-
 import { ImCheckboxChecked } from "react-icons/im";
-
 import { TiDelete } from "react-icons/ti";
 import { MdAutoDelete } from "react-icons/md";
-
-// import { toast } from "sonner";
 
 const AllBookingByTabular = () => {
   const { data: allBookings, isLoading } = useGetAllBookingsQuery(undefined, {
@@ -34,7 +30,7 @@ const AllBookingByTabular = () => {
   if (isLoading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-[#557856]"></div>
+        <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-pink-500"></div>
       </div>
     );
   }
@@ -46,8 +42,6 @@ const AllBookingByTabular = () => {
       },
       bId: bookingId,
     };
-
-    console.log(data);
 
     try {
       await updateBooking(data).unwrap();
@@ -66,8 +60,6 @@ const AllBookingByTabular = () => {
       bId: bookingId,
     };
 
-    console.log(data);
-
     try {
       await updateBooking(data).unwrap();
       toast.success("Booking rejected successfully");
@@ -81,7 +73,6 @@ const AllBookingByTabular = () => {
     swal({
       title: "Are you sure to delete?",
       text: "Once deleted, you will not be able to recover this bookings!",
-
       icon: "warning",
       //@ts-expect-error :'no error found'
       buttons: true,
@@ -112,27 +103,25 @@ const AllBookingByTabular = () => {
         swal("Cancelled", "The bookings is safe!", "info");
       }
     });
-
-    console.log(id, "del");
   };
 
   return (
     <Table>
       <TableHeader>
-        <TableRow className="border-2 border-[#557856]">
-          <TableHead className="text-[#557856]  font-medium text-base">
+        <TableRow className="border-2 border-cyan-500">
+          <TableHead className="text-slate-500  font-medium text-base">
             Room Name
           </TableHead>
-          <TableHead className="text-[#557856]  font-medium text-base">
+          <TableHead className="text-slate-500  font-medium text-base">
             User Name
           </TableHead>
-          <TableHead className="text-[#557856] font-medium text-base">
+          <TableHead className="text-slate-500 font-medium text-base">
             Date & Time
           </TableHead>
-          <TableHead className="text-[#557856] font-medium text-base">
+          <TableHead className="text-slate-500 font-medium text-base">
             Status
           </TableHead>
-          <TableHead className="text-[#557856]  text-center font-medium text-base">
+          <TableHead className="text-slate-500  text-center font-medium text-base">
             Actions
           </TableHead>
         </TableRow>
@@ -153,7 +142,7 @@ const AllBookingByTabular = () => {
             <TableCell
               className={`font-medium ${
                 booking.isConfirmed === "confirmed"
-                  ? "text-[#557856]"
+                  ? "text-green-500"
                   : "text-red-600"
               }`}
             >
@@ -163,27 +152,22 @@ const AllBookingByTabular = () => {
               {booking.isConfirmed === "confirmed" ? (
                 <Button
                   // @ts-expect-error: Variant type mismatch is expected, custom variant in use
-
                   variant="danger"
                   onClick={() => handleReject(booking._id)}
                 >
-                
                   <TiDelete className="text-red-600 text-3xl" />
                 </Button>
               ) : (
                 <Button
                   // @ts-expect-error: Variant type mismatch is expected, custom variant in use
-
                   variant="success"
                   onClick={() => handleApprove(booking._id)}
                 >
-                
                   <ImCheckboxChecked className="text-green-600 text-lg" />
                 </Button>
               )}
 
               <button onClick={() => handleDelete(booking._id)}>
-              
                 <MdAutoDelete className="text-orange-600 text-2xl" />
               </button>
             </TableCell>

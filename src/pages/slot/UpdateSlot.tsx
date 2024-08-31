@@ -46,12 +46,8 @@ const slotValidationSchema = z.object({
 });
 
 const UpdateRoom = ({ slotId, isDialogOpen, setIsDialogOpen }: any) => {
-  console.log(slotId, "roomId");
-
   const [updateSlot] = useUpdateSlotMutation();
-
-  const [alertShown, setAlertShown] = useState(false); // State to control alert visibility
-
+  const [alertShown, setAlertShown] = useState(false);
   const { data: RoomData, isLoading } = useGetAllRoomsQuery(undefined, {
     pollingInterval: 1000,
   });
@@ -60,25 +56,21 @@ const UpdateRoom = ({ slotId, isDialogOpen, setIsDialogOpen }: any) => {
     register,
     handleSubmit,
     formState: { errors },
-
     reset,
   } = useForm({
     resolver: zodResolver(slotValidationSchema),
   });
 
-  const { data: slotData, error } = useGetSingleSlotQuery(slotId);
+  const { data: slotData } = useGetSingleSlotQuery(slotId);
 
   const { data: singleRoom } = useGetSingleRoomQuery(slotData?.data?.room, {
     pollingInterval: 1000,
   });
 
-  console.log(slotData, error);
-  console.log(singleRoom);
-
   if (isLoading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-[#557856]"></div>
+        <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-pink-500"></div>
       </div>
     );
   }
@@ -86,10 +78,7 @@ const UpdateRoom = ({ slotId, isDialogOpen, setIsDialogOpen }: any) => {
   // Filter and map the data
   const availableRooms = RoomData?.data.filter((room: any) => !room.isDeleted);
 
-  // console.log(availableRooms);
-
   if (slotData?.data?.isBooked && !alertShown) {
-    // Show the alert only if it hasn't been shown before
     swal({
       title: "Update Failed",
       text: "You can't update this slot as it has already been booked.",
@@ -97,30 +86,22 @@ const UpdateRoom = ({ slotId, isDialogOpen, setIsDialogOpen }: any) => {
       //@ts-expect-error :'buttons' is generated error
       buttons: "Okay",
     }).then(() => {
-      setAlertShown(false); // Reset the alert state after user acknowledges
+      setAlertShown(false);
     });
 
     // Set the alert as shown
     setAlertShown(true);
-
-    // Exit the function to prevent further actions
     return;
   }
 
   // Function to handle form submission->
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-    console.log("Form data:", data);
-    // Reset form after submission
     reset();
     const toastId = toast.loading("updating slot...");
-
-    // Safely create the updatedData object
     const updatedData = {
       data,
-      // room: data?.room || slotData?.data?.room,
       sId: slotId,
     };
-    // console.log(updatedData);
     try {
       const res = await updateSlot(updatedData).unwrap();
       console.log(res);
@@ -142,7 +123,7 @@ const UpdateRoom = ({ slotId, isDialogOpen, setIsDialogOpen }: any) => {
       <DialogTrigger>Update</DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle className="text-[#557856]">Update Slot</DialogTitle>
+          <DialogTitle className="text-cyan-500">Update Slot</DialogTitle>
           <DialogDescription className="">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6 mt-5">
               <div>
@@ -208,7 +189,7 @@ const UpdateRoom = ({ slotId, isDialogOpen, setIsDialogOpen }: any) => {
               <div className="flex justify-center">
                 <button
                   type="submit"
-                  className="btn btn-primary text-lg px-6 py-3 bg-[#7AAC7B] text-[#072047] font-semibold rounded-md hover:bg-[#a2c5a3] "
+                  className="btn btn-primary text-lg px-6 py-3 bg-cyan-500 text-white font-semibold rounded-md hover:bg-pink-500"
                 >
                   Update Slot
                 </button>
