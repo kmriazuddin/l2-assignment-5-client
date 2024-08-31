@@ -11,6 +11,7 @@ import { useGetAllSlotsAvailabilityQuery } from "@/redux/features/admin/slotMana
 import { clearBookingData } from "@/redux/features/booking/bookingSlice";
 import { useState } from "react";
 import SectionTitle from "@/components/ui/SectionTitle";
+import { Link } from "react-router-dom";
 
 type Slot = {
   startTime: string;
@@ -168,9 +169,14 @@ const Checkout = () => {
           </div>
         </div>
       ) : (
-        <h2 className="text-3xl mt-5 mb-2 font-medium tracking-wider text-center">
-          There is no booking
-        </h2>
+        <div>
+          <h2 className="text-3xl mt-5 mb-2 font-medium tracking-wider text-center">
+            There is no booking
+          </h2>
+          <button className="flex mx-auto justify-center mt-5 bg-cyan-500 p-2 rounded hover:bg-pink-500 text-white font-medium">
+            <Link to="/my-booking">Go To My Bookings</Link>
+          </button>
+        </div>
       )}
 
       {/* Shadcn UI Dialog */}

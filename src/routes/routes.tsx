@@ -6,7 +6,6 @@ import AllRoomByTabular from "@/pages/admin/rooms/AllRoomByTabular";
 import SingleRoom from "@/pages/admin/rooms/SingleRoom";
 import AllBookingByTabular from "@/pages/booking/AllBookingByTabular";
 import BookingProcess from "@/pages/booking/BookingProcess";
-
 import CreateBooking from "@/pages/booking/CreateBooking";
 import MyBooking from "@/pages/booking/MyBooking";
 import Checkout from "@/pages/checkout/Checkout";
@@ -17,7 +16,6 @@ import MeetingRooms from "@/pages/MeetingRooms/MeetingRooms";
 import PrivacyPolicy from "@/pages/privacyPolicy/privacyPolicy";
 import AllSlotByTabular from "@/pages/slot/AllSlotByTabular";
 import Terms from "@/pages/terms/Terms";
-
 import Login from "@/pages/user/Login";
 import Register from "@/pages/user/Register";
 import { createBrowserRouter } from "react-router-dom";

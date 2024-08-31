@@ -7,7 +7,6 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { TiDelete } from "react-icons/ti";
-import { useAppSelector } from "@/redux/hooks";
 import { roomManagementApi } from "@/redux/features/admin/roomManagementApi";
 import { toast } from "sonner";
 import swal from "sweetalert";
@@ -43,22 +42,12 @@ const meetingRoomValidationSchema = z.object({
     z.number().min(1, "Price per slot is required")
   ),
   amenities: z
-    .array(
-      z
-        .string()
-        .min(1)
-        .refine((value) => /^[a-zA-Z\s]+$/.test(value), {
-          message: "Amenities must only contain alphabetic characters",
-        })
-    )
+    .array(z.string().min(1))
     .min(1, "At least one amenity is required"),
 });
 
 const CreateRoom = ({ isDialogOpen, setIsDialogOpen }: any) => {
-  const { user } = useAppSelector((state) => state.auth);
   const [addRoom] = roomManagementApi.useAddRoomsMutation();
-
-  console.log(user, "user");
 
   const {
     register,
@@ -108,7 +97,7 @@ const CreateRoom = ({ isDialogOpen, setIsDialogOpen }: any) => {
       const res = await addRoom(data).unwrap();
       console.log(res);
 
-      if (res?.success) {
+      if (res?.success == true) {
         toast.success(res?.data?.message, { id: toastId });
         swal("Room added", "", "success");
       }

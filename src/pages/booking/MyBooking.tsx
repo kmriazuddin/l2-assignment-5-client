@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import SectionTitle from "@/components/ui/SectionTitle";
 import { useMyBookingsQuery } from "@/redux/features/booking/bookingManagementApi";
 
 const MyBooking = () => {
@@ -16,18 +17,15 @@ const MyBooking = () => {
     <div className="container mx-auto py-10">
       {data?.data?.length > 0 ? (
         <>
-          {" "}
-          <h2 className="text-3xl mb-2 font-medium tracking-widest text-center">
-            Bookings
-          </h2>
-          <div className="flex justify-center">
-            <div className="w-20 text-center rounded-md  h-[5px] bg-[#809580]"></div>
-          </div>
+          <SectionTitle
+            subHeading="My Booking"
+            sectionImg="https://i.ibb.co/SdK0n79/section-title-vector.png"
+          />
           <div className="grid mt-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {data?.data.map((booking: any) => (
               <div
                 key={booking._id}
-                className="bg-white border p-4 border-[#49674a]   rounded-lg shadow-md overflow-hidden"
+                className="bg-white border p-4 border-cyan-500 rounded-lg shadow-md overflow-hidden"
               >
                 <img
                   src={booking.room.image[0]}

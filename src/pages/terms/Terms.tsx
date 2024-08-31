@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import SectionTitle from "@/components/ui/SectionTitle";
 
 const TermsOfService = () => {
   useEffect(() => {
@@ -9,59 +10,59 @@ const TermsOfService = () => {
   }, []);
 
   return (
-    <div className="bg-[#49674a]  mt-40 md:mt-0  text-white py-16">
+    <div className="md:py-16">
       <div className="container mx-auto px-6 mb-16">
-        <h2 className="text-4xl font-bold mb-4 text-center">
-          Terms of Service
-        </h2>
-        <div className="flex justify-center">
-          <div className="w-20 text-center rounded-md mb-4 h-[5px] bg-[#809580]"></div>
-        </div>
+        <SectionTitle
+          subHeading="Terms and Condition"
+          sectionImg="https://i.ibb.co/SdK0n79/section-title-vector.png"
+        />
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-1 gap-8">
           <Card
             data-aos="fade-up"
-            className="bg-[#c8d1c9] text-gray-900 shadow-lg"
+            className="bg-slate-300 text-gray-900 shadow-lg"
           >
             <CardContent>
-              <h3 className="text-xl font-semibold mt-2 mb-3">
-                Use of Service
-              </h3>
+              <h3 className="text-xl font-semibold mt-2 mb-3">Traffic Usage</h3>
               <p className="text-base leading-relaxed text-justify">
-                By accessing our services, you agree to comply with these Terms
-                of Service. You must provide accurate information and maintain
-                the confidentiality of your account details.
+                All account plans come with a predetermined amount of traffic
+                allowance. We monitor all accounts and bill $1.00 for each gig
+                of traffic exceeded. This amount is not prorated, meaning that 1
+                mb - 1 gig will be treated and billed as the same.
               </p>
             </CardContent>
           </Card>
           <Card
             data-aos="fade-up"
             data-aos-delay="100"
-            className="bg-[#c8d1c9] text-gray-900 shadow-lg"
+            className="bg-slate-300 text-gray-900 shadow-lg"
           >
             <CardContent>
               <h3 className="text-xl font-semibold mt-2 mb-3">
-                Booking and Payment
+                Refusal of Service
               </h3>
               <p className="text-base leading-relaxed text-justify">
-                When you book a meeting room, you agree to pay the applicable
-                fees as displayed on the website. All payments are processed
-                securely, and you are responsible for providing valid payment
-                information.
+                We reserve the right to refuse, cancel or suspend service, at
+                our sole discretion. All sub-networks, distributive hosting
+                sites and dedicated servers of Alpha Net must adhere to the
+                above policies, with the exception of system resources in
+                respect to dedicated servers.
               </p>
             </CardContent>
           </Card>
           <Card
             data-aos="fade-up"
             data-aos-delay="200"
-            className="bg-[#c8d1c9] text-gray-900 shadow-lg"
+            className="bg-slate-300 text-gray-900 shadow-lg"
           >
             <CardContent>
               <h3 className="text-xl font-semibold mt-2 mb-3">
-                Limitation of Liability
+                Uptime Guarantee
               </h3>
               <p className="text-base leading-relaxed text-justify">
-                We are not liable for any indirect, incidental, or consequential
-                damages arising out of your use of the website or services.
+                Alpha Net's goal is to provide 100% service (http, ftp, pop,
+                imap, smtp) uptime on all hosting plans. Should we fail to
+                deliver this for any given calendar month, your account will be
+                credit in accordance with our Service Level Agreement.
               </p>
             </CardContent>
           </Card>

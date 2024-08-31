@@ -25,9 +25,12 @@ const MainLayout = () => {
         } lg:translate-x-0`}
       >
         <div className="p-4">
-          <h1 className="text-lg mb-4">{user?.email}</h1>
-          <h1 className="text-lg mb-4">
-            User Role: <span className="font-semibold">{user?.role}</span>
+          <h1 className="bg-slate-500 text-lg p-1 mb-4">{user?.email}</h1>
+          <h1 className="bg-slate-500 text-lg p-2 mb-4">
+            User Role:{" "}
+            <span className="font-semibold">
+              <span className="text-green-500">{user?.role}</span>
+            </span>
           </h1>
           <div className="w-full h-[1px] bg-white"></div>
         </div>
@@ -37,23 +40,23 @@ const MainLayout = () => {
               <li className="mb-2">
                 <Link
                   to="/dashboard/all-room"
-                  className="block px-4 py-2 hover:bg-pink-500 rounded"
+                  className="block px-4 py-2 bg-slate-500 hover:bg-pink-500 rounded"
                 >
-                  All Room
+                  Add Room
                 </Link>
               </li>
               <li className="mb-2">
                 <Link
                   to="/dashboard/all-slot"
-                  className="block px-4 py-2 hover:bg-pink-500 rounded"
+                  className="block px-4 py-2 bg-slate-500 hover:bg-pink-500 rounded"
                 >
-                  All Slot
+                  Add Slot
                 </Link>
               </li>
               <li className="mb-2">
                 <Link
                   to="/dashboard/all-booking"
-                  className="block px-4 py-2 hover:bg-pink-500 rounded"
+                  className="block px-4 py-2 bg-slate-500 hover:bg-pink-500 rounded"
                 >
                   All Booking
                 </Link>
