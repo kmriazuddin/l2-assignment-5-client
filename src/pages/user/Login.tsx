@@ -29,6 +29,7 @@ const Login = () => {
       };
 
       const res = await login(userInfo).unwrap();
+      toast.success("Login Successfully", { id: toastId });
       const user = verifyToken(res?.token);
       dispatch(setUser({ user: user, token: res?.token }));
       navigate("/");
