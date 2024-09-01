@@ -110,7 +110,7 @@ const AllRoom = () => {
         <div className="mt-12 flex justify-center">
           <Link
             to="/rooms"
-            className="bg-[#49674a] text-white text-base hover:bg-[#557856] tracking-wide py-2 px-4 rounded-lg"
+            className="bg-cyan-500 text-white text-base hover:bg-pink-500 tracking-wide py-2 px-4 rounded-lg"
           >
             See More
           </Link>

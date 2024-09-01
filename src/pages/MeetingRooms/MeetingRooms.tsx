@@ -100,24 +100,24 @@ const MeetingRooms = () => {
           placeholder="Search Room..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="p-2 border rounded-md mb-2 md:mb-0 mx-1"
+          className="p-2 border border-cyan-500 rounded-md mb-2 md:mb-0 mx-1"
         />
 
         <select
           value={selectedCapacityRange}
           onChange={(e) => setSelectedCapacityRange(e.target.value)}
-          className="p-2 border rounded-md mb-2 md:mb-0 mx-1"
+          className="p-2 border border-cyan-500 rounded-md mb-2 md:mb-0 mx-1"
         >
           <option value="">Select Capacity</option>
           <option value="10-50">10-50</option>
-          <option value="60-90">60-90</option>
+          <option value="51-99">51-99</option>
           <option value="100-500">100-500</option>
         </select>
 
         <select
           value={selectedPriceRange}
           onChange={(e) => setSelectedPriceRange(e.target.value)}
-          className="p-2 border rounded-md mb-2 md:mb-0 mx-1"
+          className="p-2 border border-cyan-500 rounded-md mb-2 md:mb-0 mx-1"
         >
           <option value="">Select Price Range</option>
           <option value="0-500">0 - 500</option>
@@ -128,7 +128,7 @@ const MeetingRooms = () => {
         <select
           value={sortOption}
           onChange={(e) => setSortOption(e.target.value)}
-          className="p-2 border rounded-md mb-2 md:mb-0 mx-1"
+          className="p-2 border border-cyan-500 rounded-md mb-2 md:mb-0 mx-1"
         >
           <option value="">Sort By</option>
           <option value="priceLowToHigh">Price: Low to High</option>
@@ -142,7 +142,7 @@ const MeetingRooms = () => {
             setSelectedPriceRange("");
             setSortOption("");
           }}
-          className="p-2 border mx-1 rounded-md bg-pink-500 text-white"
+          className="p-2 border mx-1 rounded-md bg-cyan-500 hover:bg-pink-500 text-white"
         >
           Clear Filters
         </button>

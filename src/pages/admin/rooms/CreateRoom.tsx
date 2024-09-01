@@ -95,10 +95,9 @@ const CreateRoom = ({ isDialogOpen, setIsDialogOpen }: any) => {
     });
     try {
       const res = await addRoom(data).unwrap();
-      console.log(res);
 
       if (res?.success == true) {
-        toast.success(res?.data?.message, { id: toastId });
+        toast.success("Room Added Successfully", { id: toastId });
         swal("Room added", "", "success");
       }
       if (res?.error) {
@@ -112,7 +111,7 @@ const CreateRoom = ({ isDialogOpen, setIsDialogOpen }: any) => {
   // Function to add new image URL
   const handleAddImage = () => {
     if (newImage.trim() !== "") {
-      setValue("image", [...roomDetails?.image, newImage.trim()]); // Update form state
+      setValue("image", [...roomDetails?.image, newImage.trim()]);
       setRoomDetails({
         ...roomDetails,
 
@@ -124,7 +123,7 @@ const CreateRoom = ({ isDialogOpen, setIsDialogOpen }: any) => {
   // Function to remove image URL
   const handleRemoveImage = (index: any) => {
     const updatedImages = roomDetails?.image.filter((_, i) => i !== index);
-    setValue("image", updatedImages); // Update form state
+    setValue("image", updatedImages);
     setRoomDetails({ ...roomDetails, image: updatedImages });
   };
 

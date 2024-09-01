@@ -8,7 +8,6 @@ import { FaBangladeshiTakaSign } from "react-icons/fa6";
 const SingleRoom = () => {
   const { id } = useParams();
   const { data: singleRoom, isLoading } = useGetSingleRoomQuery(id);
-
   const [selectedImage, setSelectedImage] = useState("");
 
   useEffect(() => {
@@ -19,13 +18,12 @@ const SingleRoom = () => {
 
   const handleImageClick = (image: any) => {
     setSelectedImage(image);
-    console.log("Image selected:", image);
   };
 
   if (isLoading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-[#557856]"></div>
+        <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-b-2 border-pink-500"></div>
       </div>
     );
   }
@@ -42,14 +40,14 @@ const SingleRoom = () => {
     singleRoom.data;
 
   return (
-    <div className="bg-slate-500 py-16">
+    <div className="py-16">
       <div className="container mx-auto px-6">
         <div className="max-w-4xl border border-[#c8d1c9] p-1 mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
           <div className="relative">
             <div className="md:flex flex-col md:flex-row items-start">
               <div className="flex-grow p-2">
                 <div
-                  className="relative w-full p-4 rounded-md min-h-[400px] flex items-center justify-center bg-[#ddd]"
+                  className="relative w-full p-4 rounded-md min-h-[400px] flex items-center justify-center bg-cyan-500"
                   style={{
                     backgroundImage: `url('${selectedImage}')`,
                     backgroundSize: "cover",
